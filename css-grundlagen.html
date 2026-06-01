@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSS Grundlagen lernen – Selektoren, Farben, Box Model, Positionierung und mehr mit Code-Beispielen.">
+  <title>CSS Grundlagen – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html" class="active">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="html-tags.html">🏷️ HTML Tags</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar" aria-label="Kapitel-Navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">CSS Grundlagen</div>
+      <a href="#einfuehrung" class="sidebar-link active">🎨 Einführung</a>
+      <a href="#syntax" class="sidebar-link">📝 Syntax &amp; Selektoren</a>
+      <a href="#farben" class="sidebar-link">🌈 Farben</a>
+      <a href="#schriftarten" class="sidebar-link">🔤 Schriftarten</a>
+      <a href="#box-model" class="sidebar-link">📦 Box Model</a>
+      <a href="#margin-padding" class="sidebar-link">↔️ Margin &amp; Padding</a>
+      <a href="#border" class="sidebar-link">🔲 Border</a>
+      <a href="#display" class="sidebar-link">🖥️ Display</a>
+      <a href="#positioning" class="sidebar-link">📌 Positioning</a>
+      <a href="#units" class="sidebar-link">📏 Units</a>
+      <a href="#pseudo" class="sidebar-link">🎭 Pseudo-Klassen</a>
+      <a href="#variables" class="sidebar-link">🔧 CSS Variablen</a>
+      <a href="#best-practices" class="sidebar-link">⭐ Best Practices</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Weiter lernen</div>
+      <a href="css-layouts.html" class="sidebar-link">📐 CSS Layouts</a>
+      <a href="flexbox.html" class="sidebar-link">↔️ Flexbox</a>
+      <a href="css-grid.html" class="sidebar-link">⊞ CSS Grid</a>
+    </div>
+  </aside>
+
+  <main class="page-content">
+    <div class="page-header reveal">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-blue">CSS</span>
+        <span class="badge badge-green">Anfänger</span>
+        <span class="badge badge-cyan">13 Kapitel</span>
+      </div>
+      <h1>CSS <span class="gradient-text">Grundlagen</span></h1>
+      <p>CSS (Cascading Style Sheets) ist die Sprache, mit der du Webseiten gestaltest. Lerne alles über Selektoren, Farben, das Box Model, Positionierung und viele weitere Grundkonzepte – mit echten Code-Beispielen.</p>
+    </div>
+
+    <!-- Einführung -->
+    <section class="content-section reveal" id="einfuehrung">
+      <h2>🎨 Was ist CSS?</h2>
+      <p>CSS steht für <strong>Cascading Style Sheets</strong> und ist die Sprache, die das Aussehen von HTML-Elementen bestimmt. Während HTML die Struktur einer Seite definiert, legt CSS fest, wie diese Struktur aussieht – Farben, Schriften, Abstände, Layouts und vieles mehr.</p>
+      <p>CSS kann auf drei Arten in eine HTML-Seite eingebunden werden:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- 1. Inline CSS (direkt im Element) – nur für Ausnahmen --&gt;
+&lt;p style="color: red; font-size: 18px;"&gt;Roter Text&lt;/p&gt;
+
+&lt;!-- 2. Internes CSS (im &lt;head&gt;) – für einzelne Seiten --&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    p { color: blue; }
+    h1 { font-size: 2rem; }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;!-- 3. Externes CSS (empfohlen!) – für ganze Projekte --&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+      </div>
+      <div class="info-box info">
+        <strong>💡 Empfehlung:</strong> Verwende immer <strong>externes CSS</strong> in einer separaten <code>.css</code>-Datei. Das trennt Inhalt (HTML) von Aussehen (CSS) und macht deinen Code wartbarer.
+      </div>
+    </section>
+
+    <!-- Syntax & Selektoren -->
+    <section class="content-section reveal" id="syntax">
+      <h2>📝 CSS Syntax &amp; Selektoren</h2>
+      <p>Eine CSS-Regel besteht aus einem <strong>Selektor</strong> und einem <strong>Deklarationsblock</strong>. Der Selektor bestimmt, welche HTML-Elemente gestylt werden. Der Block enthält Eigenschaft-Wert-Paare.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Grundstruktur: Selektor { Eigenschaft: Wert; } */
+p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Element-Selektor – alle &lt;h1&gt; */
+h1 { color: navy; }
+
+/* Klassen-Selektor – alle Elemente mit class="highlight" */
+.highlight { background-color: yellow; }
+
+/* ID-Selektor – das Element mit id="header" */
+#header { background: #000; }
+
+/* Universal-Selektor – alle Elemente */
+* { box-sizing: border-box; margin: 0; }
+
+/* Attribut-Selektor */
+input[type="text"] { border: 1px solid #ccc; }
+a[href^="https"] { color: green; }   /* beginnt mit https */
+a[href$=".pdf"] { color: red; }      /* endet mit .pdf */
+
+/* Nachfahren-Selektor (Leerzeichen) */
+nav a { color: white; }              /* alle &lt;a&gt; innerhalb von &lt;nav&gt; */
+
+/* Kind-Selektor (>) – nur direkte Kinder */
+ul &gt; li { list-style: disc; }
+
+/* Geschwister-Selektor (+) – direkt folgendes Geschwister */
+h2 + p { font-size: 1.1rem; }
+
+/* Allgemeiner Geschwister-Selektor (~) */
+h2 ~ p { color: #555; }
+
+/* Mehrere Selektoren (Komma) */
+h1, h2, h3 { font-family: 'Arial', sans-serif; }
+
+/* Kombination: Klasse + Element */
+p.intro { font-weight: bold; }</code></pre>
+      </div>
+      <h3>Spezifität (Specificity)</h3>
+      <p>Wenn mehrere CSS-Regeln auf dasselbe Element zutreffen, gewinnt die spezifischere Regel. Die Reihenfolge von niedrig nach hoch:</p>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Selektor</th><th>Spezifität</th><th>Beispiel</th></tr></thead>
+          <tbody>
+            <tr><td>Universal (*)</td><td>0,0,0</td><td><code>* { }</code></td></tr>
+            <tr><td>Element</td><td>0,0,1</td><td><code>p { }</code></td></tr>
+            <tr><td>Klasse, Attribut, Pseudo-Klasse</td><td>0,1,0</td><td><code>.box { }</code></td></tr>
+            <tr><td>ID</td><td>1,0,0</td><td><code>#header { }</code></td></tr>
+            <tr><td>Inline-Style</td><td>1,0,0,0</td><td><code>style="..."</code></td></tr>
+            <tr><td>!important</td><td>Überschreibt alles</td><td><code>color: red !important;</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box warning">
+        <strong>⚠️ Vermeide !important:</strong> <code>!important</code> macht CSS schwer wartbar. Löse Spezifitätsprobleme lieber durch bessere Selektor-Struktur.
+      </div>
+    </section>
+
+    <!-- Farben -->
+    <section class="content-section reveal" id="farben">
+      <h2>🌈 Farben in CSS</h2>
+      <p>CSS bietet viele Möglichkeiten, Farben anzugeben. Jede Methode hat ihre Vor- und Nachteile.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Farbnamen (140 vordefinierte Namen) */
+color: red;
+color: navy;
+color: tomato;
+color: cornflowerblue;
+
+/* Hexadezimal (#RRGGBB oder #RGB) */
+color: #ff0000;       /* Rot */
+color: #00ff00;       /* Grün */
+color: #0000ff;       /* Blau */
+color: #333;          /* Kurzform für #333333 */
+color: #ffffff80;     /* Mit Transparenz (Alpha) */
+
+/* RGB – Rot, Grün, Blau (0–255) */
+color: rgb(255, 0, 0);
+color: rgb(51, 51, 51);
+
+/* RGBA – mit Transparenz (0 = unsichtbar, 1 = voll sichtbar) */
+color: rgba(0, 0, 0, 0.5);
+background: rgba(255, 255, 255, 0.1);
+
+/* HSL – Farbton (0–360°), Sättigung (%), Helligkeit (%) */
+color: hsl(0, 100%, 50%);     /* Rot */
+color: hsl(120, 100%, 50%);   /* Grün */
+color: hsl(240, 100%, 50%);   /* Blau */
+color: hsl(200, 80%, 60%);    /* Hellblau */
+
+/* HSLA – mit Transparenz */
+color: hsla(200, 80%, 60%, 0.7);
+
+/* CSS Custom Properties (Variablen) für Farben */
+:root {
+  --color-primary: #3b82f6;
+  --color-text: #1e293b;
+  --color-bg: #f8fafc;
+}
+body { background: var(--color-bg); color: var(--color-text); }
+a { color: var(--color-primary); }
+
+/* Farbverläufe */
+background: linear-gradient(135deg, #667eea, #764ba2);
+background: radial-gradient(circle, #00d4ff, #7c3aed);
+background: linear-gradient(to right, red, orange, yellow, green, blue);</code></pre>
+      </div>
+      <div class="info-box tip">
+        <strong>💡 Tipp:</strong> HSL ist besonders intuitiv: Der erste Wert ist der Farbton (0° = Rot, 120° = Grün, 240° = Blau), der zweite die Sättigung und der dritte die Helligkeit. Damit lassen sich Farbvarianten leicht erstellen.
+      </div>
+    </section>
+
+    <!-- Schriftarten -->
+    <section class="content-section reveal" id="schriftarten">
+      <h2>🔤 Schriftarten &amp; Typografie</h2>
+      <p>Typografie ist ein zentrales Element des Webdesigns. CSS bietet umfangreiche Möglichkeiten zur Textgestaltung.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Schriftfamilie – immer Fallback angeben! */
+font-family: 'Roboto', Arial, sans-serif;
+font-family: 'Georgia', 'Times New Roman', serif;
+font-family: 'Courier New', Courier, monospace;
+
+/* Google Fonts einbinden (im HTML &lt;head&gt;) */
+/* &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"&gt; */
+font-family: 'Inter', sans-serif;
+
+/* Schriftgröße */
+font-size: 16px;       /* Pixel – absolut */
+font-size: 1rem;       /* Relativ zur Root-Schriftgröße (meist 16px) */
+font-size: 1.25em;     /* Relativ zur Eltern-Schriftgröße */
+font-size: 2vw;        /* 2% der Viewport-Breite */
+font-size: clamp(1rem, 2.5vw, 2rem); /* Fluid: min, bevorzugt, max */
+
+/* Schriftstärke */
+font-weight: 400;      /* Normal */
+font-weight: 700;      /* Fett */
+font-weight: bold;     /* = 700 */
+font-weight: 300;      /* Light */
+font-weight: 900;      /* Extra Bold */
+
+/* Schriftstil */
+font-style: normal;
+font-style: italic;
+font-style: oblique;
+
+/* Zeilenhöhe */
+line-height: 1.6;      /* Empfohlen für Fließtext (ohne Einheit = Multiplikator) */
+line-height: 24px;
+line-height: 150%;
+
+/* Textausrichtung */
+text-align: left;
+text-align: center;
+text-align: right;
+text-align: justify;
+
+/* Textdekoration */
+text-decoration: none;           /* Unterstreichung entfernen */
+text-decoration: underline;
+text-decoration: line-through;   /* Durchgestrichen */
+text-decoration: underline dotted red;
+
+/* Buchstabenabstand */
+letter-spacing: 0.05em;
+letter-spacing: 2px;
+
+/* Wortabstand */
+word-spacing: 4px;
+
+/* Textumwandlung */
+text-transform: uppercase;
+text-transform: lowercase;
+text-transform: capitalize;
+
+/* Textschatten */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+text-shadow: 0 0 10px rgba(0, 212, 255, 0.8); /* Glow-Effekt */
+
+/* Schrift-Kurzschreibweise */
+font: italic bold 1.2rem/1.6 'Roboto', sans-serif;</code></pre>
+      </div>
+    </section>
+
+    <!-- Box Model -->
+    <section class="content-section reveal" id="box-model">
+      <h2>📦 Das Box Model</h2>
+      <p>Jedes HTML-Element ist eine Box. Das CSS Box Model beschreibt, wie diese Box aufgebaut ist – von innen nach außen: <strong>Content → Padding → Border → Margin</strong>.</p>
+      <div class="demo-box">
+        <div class="demo-box-label">🔴 Live Demo – Box Model</div>
+        <div class="box-model-demo">
+          <div class="box-margin" style="position:relative;">
+            <span class="box-label" style="color: rgba(245,158,11,0.8);">MARGIN</span>
+            <div class="box-border">
+              <div class="box-padding">
+                <div class="box-content">Content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.box {
+  /* Content: Breite und Höhe des Inhalts */
+  width: 300px;
+  height: 200px;
+
+  /* Padding: Innenabstand (zwischen Content und Border) */
+  padding: 20px;
+
+  /* Border: Rahmen */
+  border: 2px solid #333;
+
+  /* Margin: Außenabstand (zwischen Border und anderen Elementen) */
+  margin: 30px;
+
+  /* Gesamtbreite ohne box-sizing: 300 + 20*2 + 2*2 + 30*2 = 404px */
+}
+
+/* box-sizing: border-box – Empfohlen! */
+/* Padding und Border werden in width/height eingerechnet */
+* {
+  box-sizing: border-box;
+}
+
+.box-border-box {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid #333;
+  /* Gesamtbreite = genau 300px (Padding und Border inklusive) */
+}</code></pre>
+      </div>
+      <div class="info-box info">
+        <strong>💡 box-sizing: border-box:</strong> Setze <code>* { box-sizing: border-box; }</code> am Anfang jedes CSS-Projekts. Damit entspricht <code>width: 300px</code> immer der tatsächlichen Gesamtbreite – Padding und Border inklusive.
+      </div>
+    </section>
+
+    <!-- Margin & Padding -->
+    <section class="content-section reveal" id="margin-padding">
+      <h2>↔️ Margin &amp; Padding</h2>
+      <p>Margin und Padding können für alle vier Seiten einzeln oder als Kurzschreibweise angegeben werden.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Einzelne Seiten */
+margin-top: 20px;
+margin-right: 10px;
+margin-bottom: 20px;
+margin-left: 10px;
+
+/* Kurzschreibweise: oben rechts unten links (Uhrzeigersinn) */
+margin: 20px 10px 20px 10px;
+
+/* Kurzschreibweise: oben/unten  links/rechts */
+margin: 20px 10px;
+
+/* Alle Seiten gleich */
+margin: 20px;
+
+/* Zentrieren mit auto */
+margin: 0 auto;   /* Element horizontal zentrieren */
+
+/* Negative Margins (möglich!) */
+margin-top: -10px;
+
+/* Padding – gleiche Syntax wie Margin */
+padding: 1rem 2rem;
+padding-top: 0.5rem;
+
+/* Margin Collapse: Vertikale Margins von Geschwistern verschmelzen */
+/* Zwei Elemente mit margin-bottom: 20px und margin-top: 30px */
+/* haben einen Abstand von 30px (nicht 50px!) */</code></pre>
+      </div>
+    </section>
+
+    <!-- Border -->
+    <section class="content-section reveal" id="border">
+      <h2>🔲 Border (Rahmen)</h2>
+      <p>Borders können in Stil, Breite und Farbe angepasst werden. Mit <code>border-radius</code> lassen sich abgerundete Ecken erstellen.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Kurzschreibweise: Breite Stil Farbe */
+border: 2px solid #333;
+border: 1px dashed rgba(0,0,0,0.3);
+border: 3px dotted red;
+
+/* Einzelne Eigenschaften */
+border-width: 2px;
+border-style: solid;   /* solid, dashed, dotted, double, groove, ridge, inset, outset */
+border-color: #3b82f6;
+
+/* Einzelne Seiten */
+border-top: 3px solid blue;
+border-bottom: 1px dashed #ccc;
+border-left: 4px solid green;
+border-right: none;
+
+/* Abgerundete Ecken */
+border-radius: 8px;          /* Alle Ecken gleich */
+border-radius: 50%;           /* Kreis (bei gleicher Breite/Höhe) */
+border-radius: 10px 0 10px 0; /* Oben-links, oben-rechts, unten-rechts, unten-links */
+border-radius: 20px 5px;      /* Diagonal */
+
+/* Outline – außerhalb des Box Models (kein Platz) */
+outline: 2px solid blue;
+outline-offset: 4px;   /* Abstand zwischen Element und Outline */
+
+/* Box Shadow */
+box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);  /* Glow */
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);  /* Innenschatten */
+box-shadow: 2px 2px 4px #000, -2px -2px 4px #fff; /* Mehrere Schatten */</code></pre>
+      </div>
+    </section>
+
+    <!-- Display -->
+    <section class="content-section reveal" id="display">
+      <h2>🖥️ Display-Eigenschaft</h2>
+      <p>Die <code>display</code>-Eigenschaft bestimmt, wie ein Element im Layout dargestellt wird. Sie ist eine der wichtigsten CSS-Eigenschaften.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* block – nimmt volle Breite ein, beginnt auf neuer Zeile */
+/* Standard für: div, p, h1-h6, ul, li, section, article */
+display: block;
+
+/* inline – nur so breit wie der Inhalt, kein Zeilenumbruch */
+/* Standard für: span, a, strong, em, img */
+display: inline;
+/* Achtung: width/height und margin-top/bottom haben keine Wirkung! */
+
+/* inline-block – wie inline, aber mit Block-Eigenschaften */
+/* Nützlich für Buttons, Navigationslinks */
+display: inline-block;
+/* width, height, margin, padding funktionieren alle */
+
+/* none – Element wird vollständig ausgeblendet (kein Platz) */
+display: none;
+/* Vergleich: visibility: hidden; – unsichtbar, aber Platz bleibt */
+
+/* flex – Flexbox-Container (nächstes Kapitel) */
+display: flex;
+
+/* grid – Grid-Container (übernächstes Kapitel) */
+display: grid;
+
+/* Beispiel: Navigationslinks nebeneinander */
+nav a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #3b82f6;
+  color: white;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+/* Beispiel: Element verstecken und zeigen */
+.modal { display: none; }
+.modal.open { display: block; }</code></pre>
+      </div>
+    </section>
+
+    <!-- Positioning -->
+    <section class="content-section reveal" id="positioning">
+      <h2>📌 Positionierung</h2>
+      <p>Mit der <code>position</code>-Eigenschaft kannst du Elemente aus dem normalen Dokumentfluss herausnehmen und präzise platzieren.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* static – Standard, kein Positioning */
+position: static;
+
+/* relative – relativ zur normalen Position verschoben */
+/* Bleibt im Dokumentfluss (Platz bleibt erhalten) */
+.box {
+  position: relative;
+  top: 10px;    /* 10px nach unten verschoben */
+  left: 20px;   /* 20px nach rechts verschoben */
+}
+
+/* absolute – relativ zum nächsten positionierten Elternelement */
+/* Wird aus dem Dokumentfluss herausgenommen */
+.parent {
+  position: relative;  /* Referenzpunkt für absolute Kinder */
+}
+.child {
+  position: absolute;
+  top: 0;
+  right: 0;    /* Oben rechts im Elternelement */
+}
+
+/* fixed – relativ zum Viewport, scrollt nicht mit */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* sticky – bleibt beim Scrollen an einer Position "kleben" */
+.sidebar-header {
+  position: sticky;
+  top: 80px;   /* Klebt 80px vom oberen Rand */
+}
+
+/* z-index – Stapelreihenfolge (höher = weiter vorne) */
+/* Funktioniert nur bei positionierten Elementen */
+.overlay { position: fixed; z-index: 100; }
+.modal   { position: fixed; z-index: 200; }
+.tooltip { position: absolute; z-index: 300; }
+
+/* Zentrieren mit absolute + transform */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Units -->
+    <section class="content-section reveal" id="units">
+      <h2>📏 CSS Units (Einheiten)</h2>
+      <p>CSS kennt absolute und relative Einheiten. Für responsives Design sind relative Einheiten bevorzugt.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* ── Absolute Einheiten ── */
+width: 300px;    /* Pixel – am häufigsten verwendet */
+width: 10cm;     /* Zentimeter (für Print) */
+width: 1in;      /* Inch */
+
+/* ── Relative Einheiten ── */
+
+/* % – relativ zum Elternelement */
+width: 50%;      /* Halb so breit wie das Elternelement */
+height: 100%;    /* Gleiche Höhe wie Elternelement */
+
+/* em – relativ zur Schriftgröße des Elements */
+font-size: 1.5em;   /* 1.5× die Schriftgröße des Elternelements */
+padding: 1em;       /* Padding = aktuelle Schriftgröße */
+/* Achtung: em-Werte können sich verschachteln! */
+
+/* rem – relativ zur Root-Schriftgröße (html-Element) */
+font-size: 1.25rem;  /* 1.25 × 16px = 20px (wenn root = 16px) */
+margin: 2rem;        /* Konsistent, keine Verschachtelung */
+
+/* vw / vh – relativ zum Viewport */
+width: 100vw;    /* 100% der Viewport-Breite */
+height: 100vh;   /* 100% der Viewport-Höhe */
+font-size: 5vw;  /* 5% der Viewport-Breite */
+
+/* vmin / vmax */
+width: 50vmin;   /* 50% des kleineren Viewport-Maßes */
+
+/* clamp() – fluid sizing: min, bevorzugt, max */
+font-size: clamp(1rem, 2.5vw, 2rem);
+/* Mindestens 1rem, bevorzugt 2.5vw, maximal 2rem */
+
+width: clamp(300px, 50%, 800px);
+/* Mindestens 300px, bevorzugt 50%, maximal 800px */</code></pre>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Einheit</th><th>Relativ zu</th><th>Empfehlung</th></tr></thead>
+          <tbody>
+            <tr><td><code>px</code></td><td>Absolut</td><td>Borders, Shadows, kleine Details</td></tr>
+            <tr><td><code>rem</code></td><td>Root-Schriftgröße</td><td>Schriftgrößen, Abstände</td></tr>
+            <tr><td><code>em</code></td><td>Eltern-Schriftgröße</td><td>Padding/Margin relativ zur Schrift</td></tr>
+            <tr><td><code>%</code></td><td>Elternelement</td><td>Breiten, Layouts</td></tr>
+            <tr><td><code>vw/vh</code></td><td>Viewport</td><td>Vollbild-Layouts, Hero-Sections</td></tr>
+            <tr><td><code>clamp()</code></td><td>Viewport + Grenzen</td><td>Fluid Typography, responsive Größen</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Pseudo-Klassen -->
+    <section class="content-section reveal" id="pseudo">
+      <h2>🎭 Pseudo-Klassen &amp; Pseudo-Elemente</h2>
+      <p>Pseudo-Klassen selektieren Elemente in einem bestimmten Zustand. Pseudo-Elemente selektieren Teile eines Elements.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* ── Interaktions-Pseudo-Klassen ── */
+a:hover  { color: blue; }          /* Maus darüber */
+a:active { color: red; }           /* Wird geklickt */
+a:focus  { outline: 2px solid blue; } /* Tastatur-Fokus */
+a:visited { color: purple; }       /* Bereits besucht */
+
+/* ── Formular-Pseudo-Klassen ── */
+input:focus    { border-color: blue; }
+input:disabled { opacity: 0.5; cursor: not-allowed; }
+input:checked  { accent-color: green; }
+input:required { border-left: 3px solid red; }
+input:valid    { border-color: green; }
+input:invalid  { border-color: red; }
+input:placeholder-shown { background: #f0f0f0; }
+
+/* ── Struktur-Pseudo-Klassen ── */
+li:first-child  { font-weight: bold; }   /* Erstes Kind */
+li:last-child   { border-bottom: none; } /* Letztes Kind */
+li:nth-child(2) { color: blue; }         /* 2. Kind */
+li:nth-child(odd)  { background: #f5f5f5; } /* Ungerade */
+li:nth-child(even) { background: white; }   /* Gerade */
+li:nth-child(3n)   { color: red; }          /* Jedes 3. */
+li:nth-child(3n+1) { color: blue; }         /* 1., 4., 7., ... */
+
+p:only-child { font-style: italic; }    /* Einziges Kind */
+p:not(.special) { color: gray; }        /* Nicht .special */
+section:empty { display: none; }        /* Leere Elemente */
+
+/* ── Pseudo-Elemente (::) ── */
+p::first-line   { font-weight: bold; }  /* Erste Zeile */
+p::first-letter { font-size: 2em; float: left; } /* Initialbuchstabe */
+
+/* ::before und ::after – Inhalt einfügen */
+.btn::before {
+  content: '→ ';
+  color: blue;
+}
+.required::after {
+  content: ' *';
+  color: red;
+}
+
+/* Platzhalter stylen */
+input::placeholder { color: #999; font-style: italic; }
+
+/* Textauswahl stylen */
+::selection { background: #3b82f6; color: white; }</code></pre>
+      </div>
+    </section>
+
+    <!-- CSS Variables -->
+    <section class="content-section reveal" id="variables">
+      <h2>🔧 CSS Custom Properties (Variablen)</h2>
+      <p>CSS-Variablen (Custom Properties) ermöglichen es, Werte einmal zu definieren und überall zu verwenden. Sie machen CSS wartbarer und ermöglichen dynamische Themes.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Variablen im :root definieren (global verfügbar) */
+:root {
+  /* Farben */
+  --color-primary: #3b82f6;
+  --color-secondary: #7c3aed;
+  --color-text: #1e293b;
+  --color-bg: #f8fafc;
+  --color-border: rgba(0, 0, 0, 0.1);
+
+  /* Abstände */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Schriften */
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radien */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Transitions */
+  --transition: 0.3s ease;
+}
+
+/* Variablen verwenden */
+.button {
+  background: var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  transition: all var(--transition);
+}
+
+/* Fallback-Wert (wenn Variable nicht definiert) */
+color: var(--color-accent, #ff6b6b);
+
+/* Dark Mode mit CSS-Variablen */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #e2e8f0;
+    --color-bg: #0f172a;
+    --color-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Variablen lokal überschreiben */
+.card {
+  --color-primary: #10b981;  /* Nur innerhalb von .card */
+  background: var(--color-primary);
+}
+
+/* Variablen mit JavaScript ändern */
+/* document.documentElement.style.setProperty('--color-primary', '#ff0000'); */</code></pre>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="content-section reveal" id="best-practices">
+      <h2>⭐ CSS Best Practices</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>📁 CSS organisieren</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Strukturiere dein CSS logisch und konsistent:</p>
+              <ul>
+                <li>Trenne CSS in mehrere Dateien (reset.css, layout.css, components.css)</li>
+                <li>Verwende Kommentare für Abschnitte</li>
+                <li>Halte eine konsistente Reihenfolge der Eigenschaften ein</li>
+                <li>Nutze CSS Custom Properties für wiederholte Werte</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>🎯 Selektoren effizient nutzen</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Gute Selektoren sind spezifisch genug, aber nicht überspezifisch:</p>
+              <ul>
+                <li>Vermeide zu tiefe Verschachtelung: <code>.nav .list .item a</code> → besser: <code>.nav-link</code></li>
+                <li>Nutze Klassen statt IDs für Styles</li>
+                <li>Vermeide <code>!important</code> – löse Spezifitätsprobleme strukturell</li>
+                <li>Nutze BEM-Namenskonvention: <code>.block__element--modifier</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>📱 Mobile First</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Schreibe CSS zuerst für kleine Bildschirme, dann für größere:</p>
+              <ul>
+                <li>Basis-Styles für Mobile ohne Media Query</li>
+                <li>Erweitere mit <code>@media (min-width: 768px)</code> für Tablets</li>
+                <li>Dann <code>@media (min-width: 1024px)</code> für Desktop</li>
+                <li>Nutze relative Einheiten (rem, %, vw) statt fixer Pixel</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>⚡ Performance</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Schnelles CSS verbessert die Ladezeit und Nutzererfahrung:</p>
+              <ul>
+                <li>Vermeide universelle Selektoren in tiefen Verschachtelungen</li>
+                <li>Nutze <code>transform</code> und <code>opacity</code> für Animationen (GPU-beschleunigt)</li>
+                <li>Minimiere CSS für Produktion</li>
+                <li>Lade kritisches CSS inline, Rest asynchron</li>
+                <li>Vermeide <code>@import</code> in CSS (blockiert Rendering)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="page-nav" aria-label="Seitennavigation">
+      <a href="html-grundlagen.html" class="page-nav-btn">
+        <span class="page-nav-label">← Zurück</span>
+        <span class="page-nav-title">HTML Grundlagen</span>
+      </a>
+      <a href="html-tags.html" class="page-nav-btn next">
+        <span class="page-nav-label">Weiter →</span>
+        <span class="page-nav-title">HTML Tags Übersicht</span>
+      </a>
+    </nav>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col"><h4>HTML</h4><ul><li><a href="html-grundlagen.html">HTML Grundlagen</a></li><li><a href="html-tags.html">HTML Tags</a></li></ul></div>
+      <div class="footer-col"><h4>CSS</h4><ul><li><a href="css-grundlagen.html">CSS Grundlagen</a></li><li><a href="flexbox.html">Flexbox</a></li><li><a href="css-grid.html">CSS Grid</a></li></ul></div>
+      <div class="footer-col"><h4>Mehr</h4><ul><li><a href="projekte.html">Projekte</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="cheatsheets.html">Cheatsheets</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p></div>
+  </div>
+</footer>
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

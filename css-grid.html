@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSS Grid Guide – Lerne 2D-Layouts mit CSS Grid, Grid-Template, Grid-Areas und vieles mehr.">
+  <title>CSS Grid Guide – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html" class="active">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html" class="active">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar" aria-label="Kapitel-Navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">CSS Grid</div>
+      <a href="#einfuehrung" class="sidebar-link active">📖 Einführung</a>
+      <a href="#display-grid" class="sidebar-link">🖥️ Display Grid</a>
+      <a href="#grid-template-columns" class="sidebar-link">📊 Grid Columns</a>
+      <a href="#grid-template-rows" class="sidebar-link">📊 Grid Rows</a>
+      <a href="#grid-gap" class="sidebar-link">➕ Grid Gap</a>
+      <a href="#grid-auto" class="sidebar-link">⚙️ Grid Auto</a>
+      <a href="#grid-areas" class="sidebar-link">🎯 Grid Areas</a>
+      <a href="#grid-placement" class="sidebar-link">📍 Placement</a>
+      <a href="#praktische" class="sidebar-link">🎯 Praktische Beispiele</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Weiter lernen</div>
+      <a href="responsive.html" class="sidebar-link">📱 Responsive Design</a>
+      <a href="projekte.html" class="sidebar-link">🚀 Projekte</a>
+    </div>
+  </aside>
+
+  <main class="page-content">
+    <div class="page-header reveal">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-cyan">CSS</span>
+        <span class="badge badge-green">Mittel</span>
+        <span class="badge badge-purple">12 Properties</span>
+      </div>
+      <h1>Der komplette <span class="gradient-text">CSS Grid Guide</span></h1>
+      <p>CSS Grid ist das modernste Layout-Tool für 2D-Layouts. Lerne, wie du mit Zeilen und Spalten komplexe Seiten-Layouts erstellst – mit visuellen Beispielen und praxisnahem Code.</p>
+    </div>
+
+    <!-- Einführung -->
+    <section class="content-section reveal" id="einfuehrung">
+      <h2>📖 Was ist CSS Grid?</h2>
+      <p><strong>CSS Grid</strong> ist ein 2D-Layout-System, das dir ermöglicht, Layouts mit Zeilen UND Spalten zu erstellen. Im Gegensatz zu Flexbox (1D) kannst du mit Grid Elemente in beide Richtungen kontrollieren.</p>
+      <p><strong>Wann nutze ich Grid?</strong></p>
+      <ul>
+        <li>Komplexe Website-Layouts (Header, Sidebar, Content, Footer)</li>
+        <li>Dashboard-Layouts mit mehreren Spalten</li>
+        <li>Responsive Galerien</li>
+        <li>Magazine-ähnliche Designs</li>
+      </ul>
+      <div class="info-box info">
+        <strong>💡 Flexbox vs Grid:</strong> Flexbox für 1D (Reihen oder Spalten), Grid für 2D (Reihen UND Spalten).
+      </div>
+    </section>
+
+    <!-- Display Grid -->
+    <section class="content-section reveal" id="display-grid">
+      <h2>🖥️ Display: Grid</h2>
+      <p>Um CSS Grid zu nutzen, setze <code>display: grid</code> auf einem Container:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;div class="grid-container"&gt;
+  &lt;div class="item"&gt;1&lt;/div&gt;
+  &lt;div class="item"&gt;2&lt;/div&gt;
+  &lt;div class="item"&gt;3&lt;/div&gt;
+  &lt;div class="item"&gt;4&lt;/div&gt;
+  &lt;div class="item"&gt;5&lt;/div&gt;
+  &lt;div class="item"&gt;6&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;  /* 3 Spalten */
+  grid-template-rows: auto auto;       /* 2 Zeilen */
+  gap: 15px;                           /* Abstand */
+}
+
+.item {
+  background: #3b82f6;
+  padding: 40px;
+  text-align: center;
+  border-radius: 6px;
+}</code></pre>
+      </div>
+      <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent-blue); border-radius: 8px; padding: 15px; margin-top: 15px;">
+        <strong>Ergebnis:</strong> 6 Elemente in einem 3×2 Grid (3 Spalten, 2 Zeilen)
+      </div>
+    </section>
+
+    <!-- Grid Template Columns -->
+    <section class="content-section reveal" id="grid-template-columns">
+      <h2>📊 Grid-Template-Columns</h2>
+      <p>Mit <code>grid-template-columns</code> definierst du die Spalten des Grids:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: grid;
+  
+  /* Feste Breiten */
+  grid-template-columns: 200px 200px 200px;
+  
+  /* Flexible Breiten mit fr (Bruchteile) */
+  grid-template-columns: 1fr 1fr 1fr;   /* 3 gleiche Spalten */
+  grid-template-columns: 2fr 1fr;       /* Erste doppelt so breit */
+  
+  /* Mischung */
+  grid-template-columns: 200px 1fr 150px;   /* Fest, flexibel, fest */
+  
+  /* Auto (passt sich Inhalt an) */
+  grid-template-columns: auto 1fr auto;
+  
+  /* repeat() Funktion */
+  grid-template-columns: repeat(3, 1fr);     /* 3 gleiche Spalten */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive! */
+  
+  /* Minmax */
+  grid-template-columns: minmax(200px, 1fr) 200px;
+}</code></pre>
+      </div>
+      <table style="width: 100%; margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>Wert</th>
+            <th>Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>200px</code></td>
+            <td>Feste Breite von 200 Pixeln</td>
+          </tr>
+          <tr>
+            <td><code>1fr</code></td>
+            <td>Ein Bruchteil des verfügbaren Platzes</td>
+          </tr>
+          <tr>
+            <td><code>auto</code></td>
+            <td>Passt sich dem Inhalt an</td>
+          </tr>
+          <tr>
+            <td><code>repeat(3, 1fr)</code></td>
+            <td>3 Spalten mit je 1fr</td>
+          </tr>
+          <tr>
+            <td><code>minmax(200px, 1fr)</code></td>
+            <td>Mindestens 200px, maximal 1fr</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Grid Template Rows -->
+    <section class="content-section reveal" id="grid-template-rows">
+      <h2>📊 Grid-Template-Rows</h2>
+      <p>Mit <code>grid-template-rows</code> definierst du die Höhen der Zeilen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+  /* Feste Höhen */
+  grid-template-rows: 100px 150px 200px;
+  
+  /* Auto (Höhe dem Inhalt anpassen) */
+  grid-template-rows: auto auto auto;
+  
+  /* Flexibel */
+  grid-template-rows: 1fr 1fr 1fr;    /* Gleiche Höhen */
+  
+  /* Mischung */
+  grid-template-rows: 100px 1fr 100px;
+  
+  /* Repeat */
+  grid-template-rows: repeat(2, auto);
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Grid Gap -->
+    <section class="content-section reveal" id="grid-gap">
+      <h2>➕ Gap – Abstände im Grid</h2>
+      <p>Mit <code>gap</code> definierst du Abstände zwischen Grid-Items:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+  /* Gleicher Abstand überall */
+  gap: 20px;
+  
+  /* Separate row-gap und column-gap */
+  gap: 10px 20px;        /* Zeilen-Abstand, Spalten-Abstand */
+  row-gap: 10px;         /* Nur zwischen Zeilen */
+  column-gap: 20px;      /* Nur zwischen Spalten */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Grid Auto -->
+    <section class="content-section reveal" id="grid-auto">
+      <h2>⚙️ Grid-Auto-Columns & Grid-Auto-Rows</h2>
+      <p>Diese Properties definieren automatisch erzeugte Spalten und Zeilen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* Nur 3 Spalten definiert */
+  grid-template-rows: repeat(2, 100px);   /* Nur 2 Zeilen definiert */
+  
+  /* Wenn mehr als 6 Items: neue Zeilen automatisch erzeugen */
+  grid-auto-rows: 100px;    /* Jede neue Zeile 100px hoch */
+  
+  /* Neue Spalten automatisch erzeugen */
+  grid-auto-columns: 150px;
+}
+
+/* Beispiel: grid-auto-flow */
+.container {
+  grid-auto-flow: row;        /* Standard: von links nach rechts, dann unten */
+  grid-auto-flow: column;     /* Von oben nach unten, dann rechts */
+  grid-auto-flow: dense;      /* Lücken füllen */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Grid Areas -->
+    <section class="content-section reveal" id="grid-areas">
+      <h2>🎯 Grid-Template-Areas</h2>
+      <p>Mit <code>grid-template-areas</code> kannst du Bereiche wie ein ASCII-Art Layout definieren:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;div class="layout"&gt;
+  &lt;header class="header"&gt;Header&lt;/header&gt;
+  &lt;nav class="nav"&gt;Navigation&lt;/nav&gt;
+  &lt;main class="main"&gt;Main Content&lt;/main&gt;
+  &lt;aside class="sidebar"&gt;Sidebar&lt;/aside&gt;
+  &lt;footer class="footer"&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header   header   header"
+    "nav      main     sidebar"
+    "nav      main     sidebar"
+    "footer   footer   footer";
+  grid-template-columns: 150px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  gap: 20px;
+}
+
+.header {
+  grid-area: header;
+  background: #333;
+}
+
+.nav {
+  grid-area: nav;
+  background: #444;
+}
+
+.main {
+  grid-area: main;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.footer {
+  grid-area: footer;
+  background: #333;
+}</code></pre>
+      </div>
+      <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); border-radius: 8px; padding: 15px; margin-top: 15px; font-family: var(--font-mono); font-size: 0.9rem;">
+        <p style="margin: 0 0 10px 0;"><strong>Visualisierung des Layouts:</strong></p>
+        <p style="margin: 0;">header    header    header</p>
+        <p style="margin: 0;">nav       main      sidebar</p>
+        <p style="margin: 0;">nav       main      sidebar</p>
+        <p style="margin: 0;">footer    footer    footer</p>
+      </div>
+    </section>
+
+    <!-- Grid Placement -->
+    <section class="content-section reveal" id="grid-placement">
+      <h2>📍 Grid-Column & Grid-Row (Platzierung)</h2>
+      <p>Mit diesen Properties kannst du Items auf spezifische Grid-Positionen platzieren:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;div class="container"&gt;
+  &lt;div class="item-1"&gt;1&lt;/div&gt;
+  &lt;div class="item-2"&gt;2&lt;/div&gt;
+  &lt;div class="item-3"&gt;3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* Item 1 von Spalte 1 bis 3 */
+.item-1 {
+  grid-column: 1 / 3;    /* Startet Spalte 1, endet Spalte 3 */
+  grid-row: 1 / 2;       /* Zeile 1 */
+}
+
+/* Item 2 von Zeile 1 bis 3 */
+.item-2 {
+  grid-column: 3 / 5;    /* Spalten 3-5 */
+  grid-row: 1 / 3;       /* Zeilen 1-3 */
+}
+
+/* Kurzform: grid-column: start / end */
+.item-3 {
+  grid-column: 1 / -1;   /* Alle Spalten (-1 = letzter) */
+  grid-row: 3;           /* Zeile 3 */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Praktische Beispiele -->
+    <section class="content-section reveal" id="praktische">
+      <h2>🎯 Praktische Beispiele</h2>
+
+      <h3 style="margin-top: 2rem;">Beispiel 1: Website-Layout</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+header { grid-area: header; }
+nav { grid-area: nav; }
+main { grid-area: main; flex: 1; }
+footer { grid-area: footer; }
+
+/* Desktop: Header über alles, Sidebar links */
+@media (min-width: 1024px) {
+  body {
+    grid-template-areas:
+      "header header"
+      "nav main"
+      "footer footer";
+    grid-template-columns: 250px 1fr;
+  }
+}</code></pre>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Beispiel 2: Responsive Galerie</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.gallery {
+  display: grid;
+  gap: 15px;
+}
+
+/* Desktop: Auto-responsive Spalten */
+@media (min-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Tablet: 2 Spalten */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 Spalte */
+@media (max-width: 767px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Beispiel 3: Dashboard</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.dashboard {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Verschiedene Größen */
+.card-large {
+  grid-column: span 6;    /* 6 von 12 Spalten */
+}
+
+.card-medium {
+  grid-column: span 4;    /* 4 von 12 Spalten */
+}
+
+.card-small {
+  grid-column: span 2;    /* 2 von 12 Spalten */
+}
+
+@media (max-width: 768px) {
+  .card-large, .card-medium, .card-small {
+    grid-column: span 12;  /* Alle full-width auf Mobile */
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Zusammenfassung -->
+    <section class="content-section reveal" style="background: rgba(124, 58, 237, 0.05); border-left: 3px solid var(--accent-purple); padding: 20px;">
+      <h3>🎓 Zusammenfassung</h3>
+      <p><strong>Wichtigste Grid-Properties:</strong></p>
+      <ul>
+        <li><code>display: grid</code> – Aktiviert CSS Grid</li>
+        <li><code>grid-template-columns</code> – Spalten definieren</li>
+        <li><code>grid-template-rows</code> – Zeilen definieren</li>
+        <li><code>gap</code> – Abstände zwischen Items</li>
+        <li><code>grid-template-areas</code> – Benannte Bereiche</li>
+        <li><code>grid-column / grid-row</code> – Item-Platzierung</li>
+        <li><code>repeat(), minmax(), auto-fit</code> – Responsive Funktionen</li>
+      </ul>
+      <div style="margin-top: 15px;">
+        <a href="responsive.html" class="btn btn-secondary">📱 Nächstes Modul: Responsive Design</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Layouts</h4>
+        <ul>
+          <li><a href="css-layouts.html">CSS Layouts</a></li>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="css-grid.html">CSS Grid</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="responsive.html">Responsive Design</a></li>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

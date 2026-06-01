@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive Design lernen – Media Queries, Mobile First, Breakpoints und flexible Layouts.">
+  <title>Responsive Design – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html" class="active">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar" aria-label="Kapitel-Navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Responsive Design</div>
+      <a href="#einfuehrung" class="sidebar-link active">📖 Einführung</a>
+      <a href="#viewport" class="sidebar-link">🎯 Viewport Meta Tag</a>
+      <a href="#media-queries" class="sidebar-link">📺 Media Queries</a>
+      <a href="#breakpoints" class="sidebar-link">🔲 Breakpoints</a>
+      <a href="#mobile-first" class="sidebar-link">📱 Mobile First</a>
+      <a href="#units" class="sidebar-link">📏 Units</a>
+      <a href="#flexible" class="sidebar-link">🔄 Flexible Layouts</a>
+      <a href="#bilder" class="sidebar-link">🖼️ Responsive Bilder</a>
+      <a href="#praktisch" class="sidebar-link">🎯 Praxis-Tipps</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Weiter lernen</div>
+      <a href="animationen.html" class="sidebar-link">✨ Animationen</a>
+      <a href="projekte.html" class="sidebar-link">🚀 Projekte</a>
+    </div>
+  </aside>
+
+  <main class="page-content">
+    <div class="page-header reveal">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-cyan">CSS</span>
+        <span class="badge badge-orange">Wichtig</span>
+        <span class="badge badge-purple">7 Kapitel</span>
+      </div>
+      <h1>Responsive <span class="gradient-text">Design</span></h1>
+      <p>Lerne, wie du Websites erstellst, die auf allen Geräten perfekt aussehen – von Smartphones über Tablets bis hin zu großen Monitoren.</p>
+    </div>
+
+    <!-- Einführung -->
+    <section class="content-section reveal" id="einfuehrung">
+      <h2>📖 Was ist Responsive Design?</h2>
+      <p><strong>Responsive Design</strong> bedeutet, dass eine Website sich automatisch an die Bildschirmgröße des Geräts anpasst. Dieselbe HTML/CSS funktioniert auf Smartphones, Tablets und Desktops perfekt.</p>
+      <p><strong>Warum ist Responsive Design wichtig?</strong></p>
+      <ul>
+        <li>Über 60% des Webs wird auf Mobilgeräten genutzt</li>
+        <li>Google bevorzugt mobile-optimierte Websites in Rankings</li>
+        <li>Bessere User Experience auf allen Geräten</li>
+        <li>Nur eine Website für alle Geräte = weniger Wartungsaufwand</li>
+      </ul>
+      <div class="info-box info">
+        <strong>💡 Merke:</strong> Responsive Design ist KEIN optionales Feature – es ist eine Notwendigkeit!
+      </div>
+    </section>
+
+    <!-- Viewport Meta Tag -->
+    <section class="content-section reveal" id="viewport">
+      <h2>🎯 Der Viewport Meta Tag</h2>
+      <p>Der erste Schritt zu Responsive Design ist die richtige Meta-Tag im HTML-Head:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  
+  &lt;!-- WICHTIG: Viewport Meta Tag für Responsive Design --&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;title&gt;Meine Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+      <p style="margin-top: 15px;"><strong>Was bedeutet das?</strong></p>
+      <ul>
+        <li><code>width=device-width</code> – Die Seite sollte so breit sein wie das Gerät</li>
+        <li><code>initial-scale=1.0</code> – Keine Zoom-Änderung beim Laden</li>
+      </ul>
+      <div class="info-box success">
+        <strong>✅ WICHTIG:</strong> Ohne dieses Meta Tag werden deine responsiven Layouts auf Mobilgeräten nicht funktionieren!
+      </div>
+    </section>
+
+    <!-- Media Queries -->
+    <section class="content-section reveal" id="media-queries">
+      <h2>📺 Media Queries</h2>
+      <p><strong>Media Queries</strong> ermöglichen es dir, CSS-Regeln basierend auf Gerätecharakteristiken (wie Bildschirmgröße) anzuwenden:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Standard-Styles (Desktop/Alle Geräte) */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 250px 250px;  /* 3 Spalten */
+  gap: 20px;
+}
+
+/* Tablet: Max 1024px breit */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr 250px;      /* 2 Spalten */
+  }
+}
+
+/* Smartphone: Max 768px breit */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;            /* 1 Spalte */
+    gap: 10px;
+  }
+}
+
+/* Nur Portrait auf Handy */
+@media (max-width: 480px) and (orientation: portrait) {
+  .container {
+    padding: 10px;
+  }
+}</code></pre>
+      </div>
+      <p style="margin-top: 15px;"><strong>Wichtige Media Query Operatoren:</strong></p>
+      <table style="width: 100%; margin-top: 10px;">
+        <thead>
+          <tr>
+            <th>Operator</th>
+            <th>Bedeutung</th>
+            <th>Beispiel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>max-width</code></td>
+            <td>Bis zu dieser Breite</td>
+            <td><code>@media (max-width: 768px)</code></td>
+          </tr>
+          <tr>
+            <td><code>min-width</code></td>
+            <td>Ab dieser Breite</td>
+            <td><code>@media (min-width: 1024px)</code></td>
+          </tr>
+          <tr>
+            <td><code>and</code></td>
+            <td>Mehrere Bedingungen</td>
+            <td><code>@media (min-width: 768px) and (max-width: 1024px)</code></td>
+          </tr>
+          <tr>
+            <td><code>orientation</code></td>
+            <td>Portrait oder Landscape</td>
+            <td><code>@media (orientation: portrait)</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Breakpoints -->
+    <section class="content-section reveal" id="breakpoints">
+      <h2>🔲 Breakpoints – Wichtige Bildschirmgrößen</h2>
+      <p>Breakpoints sind Bildschirmgrößen, an denen sich dein Layout ändert. Hier sind die Standard-Breakpoints:</p>
+      <table style="width: 100%; margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>Gerätetyp</th>
+            <th>Breakpoint</th>
+            <th>Beispiele</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Smartphone (Portrait)</td>
+            <td>≤ 480px</td>
+            <td>iPhone, Android Phone</td>
+          </tr>
+          <tr>
+            <td>Smartphone (Landscape) / Tablet (Portrait)</td>
+            <td>481px - 768px</td>
+            <td>iPhone Landscape, iPad</td>
+          </tr>
+          <tr>
+            <td>Tablet (Landscape)</td>
+            <td>769px - 1024px</td>
+            <td>iPad Landscape</td>
+          </tr>
+          <tr>
+            <td>Desktop</td>
+            <td>≥ 1025px</td>
+            <td>Laptop, Desktop Monitor</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-block-wrapper" style="margin-top: 15px;">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Häufig verwendete Breakpoints */
+
+/* Smartphone */
+@media (max-width: 480px) { ... }
+
+/* Tablet */
+@media (max-width: 768px) { ... }
+
+/* Tablet Landscape / Small Desktop */
+@media (max-width: 1024px) { ... }
+
+/* Desktop */
+@media (min-width: 1025px) { ... }</code></pre>
+      </div>
+    </section>
+
+    <!-- Mobile First -->
+    <section class="content-section reveal" id="mobile-first">
+      <h2>📱 Mobile First Approach</h2>
+      <p><strong>Mobile First</strong> bedeutet, dass du zuerst für Smartphones optimierst, dann für größere Bildschirme:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Mobile First: Zuerst Mobile Style schreiben */
+.container {
+  display: flex;
+  flex-direction: column;    /* Vertikal gestapelt */
+  width: 100%;
+  padding: 10px;
+}
+
+.item {
+  width: 100%;              /* Vollbreite auf Mobile */
+  margin-bottom: 10px;
+}
+
+/* Dann für Tablet optimieren */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;     /* Nebeneinander */
+    gap: 20px;
+  }
+  
+  .item {
+    width: 48%;
+    margin-bottom: 0;
+  }
+}
+
+/* Dann für Desktop optimieren */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .item {
+    width: 30%;
+  }
+}</code></pre>
+      </div>
+      <div class="info-box success">
+        <strong>✅ Vorteile:</strong> Mobile First CSS ist kleiner, schneller und führt zu besserer Mobile-Erfahrung.
+      </div>
+    </section>
+
+    <!-- Units -->
+    <section class="content-section reveal" id="units">
+      <h2>📏 Responsive Units</h2>
+      <p>Nutze flexible Units anstatt fester Pixel-Werte:</p>
+      <table style="width: 100%; margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Beschreibung</th>
+            <th>Beispiel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>%</code></td>
+            <td>Prozentsatz der Parent-Breite</td>
+            <td><code>width: 50%;</code></td>
+          </tr>
+          <tr>
+            <td><code>em</code></td>
+            <td>Relativ zur Element-Schriftgröße</td>
+            <td><code>padding: 2em;</code></td>
+          </tr>
+          <tr>
+            <td><code>rem</code></td>
+            <td>Relativ zur Root-Schriftgröße</td>
+            <td><code>font-size: 1.5rem;</code></td>
+          </tr>
+          <tr>
+            <td><code>vw</code></td>
+            <td>Viewport-Breite (1vw = 1% Fensterbreite)</td>
+            <td><code>width: 100vw;</code></td>
+          </tr>
+          <tr>
+            <td><code>vh</code></td>
+            <td>Viewport-Höhe</td>
+            <td><code>height: 100vh;</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-block-wrapper" style="margin-top: 15px;">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Gut: Flexible Units */
+.container {
+  width: 90%;              /* 90% der Parent-Breite */
+  max-width: 1200px;       /* Aber max 1200px auf Desktop */
+  margin: 0 auto;
+  padding: 1.5rem;         /* Relativ zur Schriftgröße */
+}
+
+.section {
+  width: 100%;
+}
+
+/* Hero Section: Ganze Bildschirmhöhe */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Flexible Layouts -->
+    <section class="content-section reveal" id="flexible">
+      <h2>🔄 Flexible Layouts mit Flexbox & Grid</h2>
+      <p>Flexbox und CSS Grid sind natürlicherweise responsive:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Flexbox: Automatisches Wrapping */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.flex-item {
+  flex: 1 1 250px;    /* Min 250px, wächst flexibel */
+}
+
+/* Grid: Auto-responsive */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Kein Media Query nötig – passt sich automatisch an! */</code></pre>
+      </div>
+    </section>
+
+    <!-- Responsive Bilder -->
+    <section class="content-section reveal" id="bilder">
+      <h2>🖼️ Responsive Bilder</h2>
+      <p>Bilder sollten sich auch der Bildschirmgröße anpassen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML: srcset für verschiedene Auflösungen --&gt;
+&lt;img 
+  src="bild-small.jpg" 
+  srcset="bild-small.jpg 480w,
+          bild-medium.jpg 768w,
+          bild-large.jpg 1200w"
+  alt="Beschreibung"
+&gt;
+
+&lt;!-- CSS: Bilder responsive machen --&gt;
+&lt;style&gt;
+img {
+  width: 100%;           /* Breite anpassen */
+  height: auto;          /* Höhe proportional */
+  max-width: 100%;       /* Nie größer als Container */
+  display: block;
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+}
+&lt;/style&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Praktische Tipps -->
+    <section class="content-section reveal" id="praktisch">
+      <h2>🎯 Praktische Tipps</h2>
+      <div style="background: rgba(0, 212, 255, 0.1); border-left: 3px solid var(--accent-cyan); padding: 15px; margin-bottom: 15px;">
+        <p><strong>✅ DO's (Richtig machen):</strong></p>
+        <ul style="margin-bottom: 0;">
+          <li>Nutze <code>max-width</code> für Container</li>
+          <li>Setze das Viewport Meta Tag</li>
+          <li>Nutze Flexbox und Grid</li>
+          <li>Teste auf echten Geräten</li>
+          <li>Mobile First denken</li>
+          <li>Relative Units nutzen (%,  rem, em)</li>
+        </ul>
+      </div>
+      <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 15px;">
+        <p><strong>❌ DON'Ts (Falsch machen):</strong></p>
+        <ul style="margin-bottom: 0;">
+          <li>Keine fixen Breiten (außer max-width)</li>
+          <li>Keine Horizontal-Scrollbars!</li>
+          <li>Keine übergroßen Bilder</li>
+          <li>Keine Media-Query-Überflutung</li>
+          <li>Design nicht für Touch optimieren</li>
+          <li>Keine ausschließlich Pixel-basierte Layouts</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Vollständiges Beispiel -->
+    <section class="content-section reveal" style="background: rgba(124, 58, 237, 0.05); border-left: 3px solid var(--accent-purple); padding: 20px;">
+      <h3>📝 Vollständiges responsives Beispiel</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Responsive Website&lt;/title&gt;
+  &lt;style&gt;
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Mobile First */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+    
+    /* Tablet */
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="grid"&gt;
+      &lt;article&gt;Artikel 1&lt;/article&gt;
+      &lt;article&gt;Artikel 2&lt;/article&gt;
+      &lt;article&gt;Artikel 3&lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Layouts</h4>
+        <ul>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="css-grid.html">CSS Grid</a></li>
+          <li><a href="responsive.html">Responsive Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="cheatsheets.html">Cheatsheets</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

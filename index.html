@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CodeLearn – Die moderne Lernplattform für HTML und CSS. Lerne Webentwicklung mit interaktiven Beispielen, Projekten und Quizzes.">
+  <meta name="keywords" content="HTML lernen, CSS lernen, Webentwicklung, Coding, Frontend, Tutorial">
+  <title>CodeLearn – Lerne HTML & CSS wie ein Profi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo">⚡ CodeLearn</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- Reading Progress Bar -->
+<div id="progress-bar" role="progressbar" aria-label="Lesefortschritt"></div>
+
+<!-- Navbar -->
+<nav class="navbar" role="navigation" aria-label="Hauptnavigation">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo" aria-label="CodeLearn Startseite">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="html-grundlagen.html" class="btn-nav">Jetzt starten</a>
+      <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="html-tags.html">🏷️ HTML Tags</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+  <a href="about.html">ℹ️ Über uns</a>
+</div>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" aria-label="Hero-Bereich">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge animate-fadeInDown">✨ Kostenlos & Open Source</div>
+        <h1 class="hero-title animate-fadeInUp">
+          Lerne HTML & CSS<br>
+          <span class="gradient-text">wie ein Profi</span>
+        </h1>
+        <p class="hero-subtitle animate-fadeInUp delay-200">
+          Von den Grundlagen bis zu modernen Layouts – lerne Webentwicklung mit interaktiven Beispielen, Live-Demos und echten Projekten.
+        </p>
+        <div class="hero-actions animate-fadeInUp delay-300">
+          <a href="html-grundlagen.html" class="btn btn-primary btn-shimmer btn-lg">
+            🚀 Jetzt starten
+          </a>
+          <a href="projekte.html" class="btn btn-secondary btn-lg">
+            👁️ Projekte ansehen
+          </a>
+        </div>
+        <div class="hero-stats animate-fadeInUp delay-400">
+          <div class="hero-stat">
+            <span class="hero-stat-number counter" data-target="12" data-suffix="+">12+</span>
+            <span class="hero-stat-label">Module</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number counter" data-target="50" data-suffix="+">50+</span>
+            <span class="hero-stat-label">Beispiele</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number counter" data-target="15" data-suffix="">15</span>
+            <span class="hero-stat-label">Quiz-Fragen</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number counter" data-target="6" data-suffix="">6</span>
+            <span class="hero-stat-label">Projekte</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Code Preview -->
+      <div class="hero-code-preview animate-fadeInRight delay-300" aria-hidden="true">
+        <div class="code-preview-header">
+          <span class="code-dot red"></span>
+          <span class="code-dot yellow"></span>
+          <span class="code-dot green"></span>
+          <span class="code-preview-title">index.html</span>
+        </div>
+        <div class="code-preview-body">
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Meine Website&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="hero"&gt;
+    &lt;h1&gt;Hallo, Welt! 👋&lt;/h1&gt;
+    &lt;p&gt;Willkommen auf meiner Website&lt;/p&gt;
+    &lt;a href="#start" class="btn"&gt;
+      Jetzt starten
+    &lt;/a&gt;
+  &lt;/header&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" aria-labelledby="features-title">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Warum CodeLearn?</span>
+        <h2 class="section-title" id="features-title">Alles was du zum Lernen brauchst</h2>
+        <p class="section-subtitle">Eine vollständige Lernplattform mit modernem Design und praxisnahen Inhalten.</p>
+      </div>
+      <div class="grid-3 stagger-children">
+        <div class="card">
+          <div class="card-icon cyan">💡</div>
+          <h3>Klare Erklärungen</h3>
+          <p>Jedes Konzept wird verständlich erklärt – von einfach bis komplex, Schritt für Schritt.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon purple">⚡</div>
+          <h3>Live Code-Beispiele</h3>
+          <p>Alle Konzepte mit echten Code-Beispielen und Syntax-Highlighting für besseres Verständnis.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon blue">🎯</div>
+          <h3>Praxisprojekte</h3>
+          <p>6 vollständige Projekte zum Nachbauen – von der Landing Page bis zur responsiven Galerie.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">🧠</div>
+          <h3>Interaktives Quiz</h3>
+          <p>Teste dein Wissen mit 15 Multiple-Choice-Fragen und erhalte sofortiges Feedback.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">📋</div>
+          <h3>Cheatsheets</h3>
+          <p>Schnelle Referenz für alle wichtigen HTML-Tags und CSS-Properties auf einen Blick.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">📱</div>
+          <h3>Responsive Design</h3>
+          <p>Lerne moderne Layouts mit Flexbox, Grid und Media Queries für alle Bildschirmgrößen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics Section -->
+  <section class="section" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);" aria-labelledby="topics-title">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Lernmodule</span>
+        <h2 class="section-title" id="topics-title">Alle Themen im Überblick</h2>
+        <p class="section-subtitle">Wähle ein Thema und starte direkt durch – strukturiert vom Anfänger bis zum Fortgeschrittenen.</p>
+      </div>
+      <div class="grid-auto stagger-children">
+        <a href="html-grundlagen.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">📄</span>
+            <span class="topic-card-level level-beginner">Anfänger</span>
+          </div>
+          <h3>HTML Grundlagen</h3>
+          <p>Dokumentstruktur, Tags, Attribute, Formulare und semantisches HTML.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">12 Kapitel</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="css-grundlagen.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">🎨</span>
+            <span class="topic-card-level level-beginner">Anfänger</span>
+          </div>
+          <h3>CSS Grundlagen</h3>
+          <p>Selektoren, Box Model, Farben, Schriften und grundlegende Styling-Techniken.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">10 Kapitel</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="html-tags.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">🏷️</span>
+            <span class="topic-card-level level-beginner">Anfänger</span>
+          </div>
+          <h3>HTML Tags Übersicht</h3>
+          <p>Vollständige Referenz aller wichtigen HTML-Tags mit Beispielen und Beschreibungen.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">60+ Tags</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="css-layouts.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">📐</span>
+            <span class="topic-card-level level-intermediate">Mittel</span>
+          </div>
+          <h3>CSS Layouts</h3>
+          <p>Box Model, Positioning, Display-Typen und das Container-Konzept.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">8 Kapitel</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="flexbox.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">↔️</span>
+            <span class="topic-card-level level-intermediate">Mittel</span>
+          </div>
+          <h3>Flexbox</h3>
+          <p>Alle Flexbox-Properties mit visuellen Live-Demos und Praxisbeispielen.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">15 Properties</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="css-grid.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">⊞</span>
+            <span class="topic-card-level level-intermediate">Mittel</span>
+          </div>
+          <h3>CSS Grid</h3>
+          <p>Moderne 2D-Layouts mit CSS Grid – von einfach bis komplex.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">12 Properties</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="responsive.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">📱</span>
+            <span class="topic-card-level level-intermediate">Mittel</span>
+          </div>
+          <h3>Responsive Design</h3>
+          <p>Media Queries, Mobile First und flexible Layouts für alle Geräte.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">7 Kapitel</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="animationen.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">✨</span>
+            <span class="topic-card-level level-advanced">Fortgeschritten</span>
+          </div>
+          <h3>Animationen</h3>
+          <p>CSS Transitions, Keyframes und moderne Animationseffekte mit Live-Demos.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">10 Kapitel</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+        <a href="projekte.html" class="topic-card">
+          <div class="topic-card-header">
+            <span class="topic-card-icon">🚀</span>
+            <span class="topic-card-level level-advanced">Fortgeschritten</span>
+          </div>
+          <h3>Praxisprojekte</h3>
+          <p>6 vollständige Projekte mit HTML & CSS Code zum Nachbauen und Lernen.</p>
+          <div class="topic-card-footer">
+            <span class="topic-card-meta">6 Projekte</span>
+            <span class="topic-card-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section stats-section" aria-label="Statistiken">
+    <div class="section-container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-number counter" data-target="12" data-suffix="+">12+</span>
+          <span class="stat-label">Lernmodule</span>
+        </div>
+        <div class="stat-item reveal delay-100">
+          <span class="stat-number counter" data-target="50" data-suffix="+">50+</span>
+          <span class="stat-label">Code-Beispiele</span>
+        </div>
+        <div class="stat-item reveal delay-200">
+          <span class="stat-number counter" data-target="6" data-suffix="">6</span>
+          <span class="stat-label">Praxisprojekte</span>
+        </div>
+        <div class="stat-item reveal delay-300">
+          <span class="stat-number counter" data-target="100" data-suffix="%">100%</span>
+          <span class="stat-label">Kostenlos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Path Section -->
+  <section class="section" aria-labelledby="path-title">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Lernpfad</span>
+        <h2 class="section-title" id="path-title">Dein Weg zum Web-Entwickler</h2>
+        <p class="section-subtitle">Folge diesem strukturierten Lernpfad für den besten Lernerfolg.</p>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <div class="reveal" style="display: flex; gap: 1.5rem; align-items: flex-start; padding-bottom: 2rem; position: relative;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--bg-primary); font-size: 1.1rem; z-index: 1;">1</div>
+              <div style="width: 2px; flex: 1; background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple)); margin-top: 0.5rem; min-height: 40px;"></div>
+            </div>
+            <div style="padding-top: 0.5rem;">
+              <h3 style="color: var(--accent-cyan); margin-bottom: 0.25rem;">HTML Grundlagen</h3>
+              <p style="margin: 0; font-size: 0.9rem;">Lerne die Struktur von Webseiten kennen. Tags, Attribute und semantisches HTML.</p>
+            </div>
+          </div>
+          <div class="reveal delay-100" style="display: flex; gap: 1.5rem; align-items: flex-start; padding-bottom: 2rem; position: relative;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; z-index: 1;">2</div>
+              <div style="width: 2px; flex: 1; background: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue)); margin-top: 0.5rem; min-height: 40px;"></div>
+            </div>
+            <div style="padding-top: 0.5rem;">
+              <h3 style="color: var(--accent-purple); margin-bottom: 0.25rem;">CSS Grundlagen</h3>
+              <p style="margin: 0; font-size: 0.9rem;">Gestalte deine HTML-Seiten mit Farben, Schriften und dem Box Model.</p>
+            </div>
+          </div>
+          <div class="reveal delay-200" style="display: flex; gap: 1.5rem; align-items: flex-start; padding-bottom: 2rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; z-index: 1;">3</div>
+              <div style="width: 2px; flex: 1; background: linear-gradient(to bottom, var(--accent-blue), var(--accent-green)); margin-top: 0.5rem; min-height: 40px;"></div>
+            </div>
+            <div style="padding-top: 0.5rem;">
+              <h3 style="color: var(--accent-blue); margin-bottom: 0.25rem;">Layouts: Flexbox & Grid</h3>
+              <p style="margin: 0; font-size: 0.9rem;">Erstelle moderne, flexible Layouts für Desktop und Mobile.</p>
+            </div>
+          </div>
+          <div class="reveal delay-300" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--bg-primary); font-size: 1.1rem;">4</div>
+            </div>
+            <div style="padding-top: 0.5rem;">
+              <h3 style="color: var(--accent-green); margin-bottom: 0.25rem;">Projekte & Praxis</h3>
+              <p style="margin: 0; font-size: 0.9rem;">Wende alles Gelernte in echten Projekten an und baue dein Portfolio auf.</p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="html-grundlagen.html" class="btn btn-primary btn-lg btn-shimmer">🚀 Lernpfad starten</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS. Kostenlos, strukturiert und praxisnah.</p>
+      </div>
+      <div class="footer-col">
+        <h4>HTML</h4>
+        <ul>
+          <li><a href="html-grundlagen.html">HTML Grundlagen</a></li>
+          <li><a href="html-tags.html">HTML Tags</a></li>
+          <li><a href="html-grundlagen.html#formulare">Formulare</a></li>
+          <li><a href="html-grundlagen.html#semantic">Semantic HTML</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CSS</h4>
+        <ul>
+          <li><a href="css-grundlagen.html">CSS Grundlagen</a></li>
+          <li><a href="css-layouts.html">CSS Layouts</a></li>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="css-grid.html">CSS Grid</a></li>
+          <li><a href="responsive.html">Responsive Design</a></li>
+          <li><a href="animationen.html">Animationen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="cheatsheets.html">Cheatsheets</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="about.html">Über uns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">GH</a>
+        <a href="#" aria-label="Twitter">TW</a>
+        <a href="#" aria-label="Discord">DC</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll-to-top Button -->
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

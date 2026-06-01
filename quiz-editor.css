@@ -1,0 +1,438 @@
+/* Quiz and code editor upgrades */
+
+.quiz-shell,
+.ide-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: calc(var(--navbar-height) + 2rem) 1.25rem 3rem;
+}
+
+.quiz-hero-card,
+.quiz-panel,
+.ide-workbench {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(17, 24, 39, 0.78));
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42), 0 0 36px rgba(0, 212, 255, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.quiz-hero-card {
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.quiz-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.quiz-field label,
+.editor-label {
+  display: block;
+  color: var(--accent-cyan);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.quiz-field select,
+.project-name-input {
+  width: 100%;
+  background: rgba(2, 6, 23, 0.74);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font: inherit;
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  outline: none;
+}
+
+.quiz-field select:focus,
+.project-name-input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+}
+
+.quiz-stats-strip,
+.quiz-hud,
+.ide-toolbar,
+.ide-statusbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.quiz-stats-strip {
+  margin: 1.5rem 0;
+}
+
+.quiz-stat-pill {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.86rem;
+}
+
+.quiz-stat-pill strong {
+  color: var(--text-primary);
+}
+
+.quiz-panel {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.quiz-hud {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.quiz-meter {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 1rem 0 1.25rem;
+}
+
+.quiz-meter span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+  box-shadow: var(--glow-cyan);
+  transition: width 0.35s ease;
+}
+
+.quiz-question-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-question-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0, 212, 255, 0.08), transparent 35%, rgba(124, 58, 237, 0.08));
+  pointer-events: none;
+}
+
+.quiz-question-card > * {
+  position: relative;
+}
+
+.quiz-option {
+  min-height: 54px;
+}
+
+.quiz-option.locked {
+  cursor: default;
+}
+
+.quiz-option.incorrect,
+.quiz-option.wrong {
+  border-color: var(--accent-red);
+  background: rgba(239, 68, 68, 0.1);
+  color: #fecaca;
+}
+
+.quiz-explanation {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: rgba(0, 212, 255, 0.07);
+}
+
+.quiz-explanation.show {
+  display: block;
+  animation: fadeInUp 0.24s ease both;
+}
+
+.quiz-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.quiz-result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.quiz-result-tile {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.quiz-result-tile strong {
+  display: block;
+  color: var(--accent-cyan);
+  font-size: 1.45rem;
+}
+
+.quiz-result-tile span {
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+}
+
+.timer-danger {
+  color: var(--accent-red);
+  text-shadow: 0 0 16px rgba(239, 68, 68, 0.45);
+}
+
+.ide-shell {
+  padding-top: 1rem;
+}
+
+.ide-workbench {
+  overflow: hidden;
+}
+
+.ide-toolbar {
+  justify-content: space-between;
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(2, 6, 23, 0.72);
+}
+
+.ide-toolbar-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.ide-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(2, 6, 23, 0.52);
+  overflow-x: auto;
+}
+
+.ide-tab {
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-width: 110px;
+  padding: 0.8rem 1rem;
+}
+
+.ide-tab.active {
+  color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+  box-shadow: inset 0 -2px 0 var(--accent-cyan);
+}
+
+.ide-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+  min-height: 620px;
+}
+
+.ide-editor-pane,
+.ide-preview-pane {
+  min-width: 0;
+}
+
+.ide-editor-wrap {
+  position: relative;
+  height: 430px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  background: #050816;
+  overflow: hidden;
+}
+
+.line-numbers {
+  padding: 1rem 0.65rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  color: #64748b;
+  font: 14px/1.6 var(--font-mono);
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+}
+
+.code-layer {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.highlight-layer,
+.code-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  padding: 1rem;
+  font: 14px/1.6 var(--font-mono);
+  tab-size: 2;
+  white-space: pre;
+  overflow: auto;
+}
+
+.highlight-layer {
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.code-input {
+  color: transparent;
+  caret-color: var(--accent-cyan);
+  background: transparent;
+  outline: none;
+  resize: none;
+}
+
+.tok-tag,
+.tok-keyword {
+  color: #67e8f9;
+}
+
+.tok-attr,
+.tok-prop {
+  color: #c4b5fd;
+}
+
+.tok-string {
+  color: #86efac;
+}
+
+.tok-comment {
+  color: #64748b;
+}
+
+.ide-preview-pane {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-rows: 1fr 190px;
+}
+
+.preview-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+  background: white;
+}
+
+.console-panel {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #030712;
+  overflow: auto;
+}
+
+.console-header,
+.ide-statusbar {
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.console-output {
+  padding: 0.75rem;
+  font: 13px/1.5 var(--font-mono);
+}
+
+.console-line {
+  border-left: 2px solid rgba(148, 163, 184, 0.35);
+  color: var(--text-secondary);
+  margin-bottom: 0.45rem;
+  padding-left: 0.55rem;
+  word-break: break-word;
+}
+
+.console-line.error {
+  border-left-color: var(--accent-red);
+  color: #fecaca;
+}
+
+.console-line.warn {
+  border-left-color: var(--accent-orange);
+  color: #fde68a;
+}
+
+.ide-statusbar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 0;
+  background: rgba(2, 6, 23, 0.72);
+}
+
+.ide-workbench.fullscreen {
+  position: fixed;
+  inset: 12px;
+  z-index: 20000;
+  display: flex;
+  flex-direction: column;
+}
+
+.ide-workbench.fullscreen .ide-layout {
+  flex: 1;
+}
+
+@media (max-width: 980px) {
+  .quiz-menu-grid,
+  .ide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ide-preview-pane {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .quiz-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .quiz-shell,
+  .ide-shell {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .quiz-actions .btn,
+  .ide-toolbar .btn,
+  .project-name-input {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quiz-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ide-editor-wrap {
+    grid-template-columns: 44px 1fr;
+    height: 360px;
+  }
+}

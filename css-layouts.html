@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSS Layouts lernen – Box Model, Display, Positioning, Overflow und Container-Konzepte mit Beispielen.">
+  <title>CSS Layouts – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="html-tags.html">🏷️ HTML Tags</a>
+  <a href="css-layouts.html" class="active">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar" aria-label="Kapitel-Navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">CSS Layouts</div>
+      <a href="#einfuehrung" class="sidebar-link active">📖 Einführung</a>
+      <a href="#box-model" class="sidebar-link">📦 Box Model</a>
+      <a href="#inline-vs-block" class="sidebar-link">📌 Inline vs Block</a>
+      <a href="#display" class="sidebar-link">🖥️ Display-Typen</a>
+      <a href="#positioning" class="sidebar-link">📍 Positioning</a>
+      <a href="#z-index" class="sidebar-link">🎯 Z-Index</a>
+      <a href="#overflow" class="sidebar-link">⊕ Overflow</a>
+      <a href="#container" class="sidebar-link">🔲 Container Queries</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Weiter lernen</div>
+      <a href="flexbox.html" class="sidebar-link">↔️ Flexbox</a>
+      <a href="css-grid.html" class="sidebar-link">⊞ CSS Grid</a>
+      <a href="responsive.html" class="sidebar-link">📱 Responsive Design</a>
+    </div>
+  </aside>
+
+  <main class="page-content">
+    <div class="page-header reveal">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-blue">CSS</span>
+        <span class="badge badge-orange">Fortgeschritten</span>
+        <span class="badge badge-purple">8 Kapitel</span>
+      </div>
+      <h1>CSS <span class="gradient-text">Layouts</span></h1>
+      <p>Lerne die Grundlagen moderner CSS-Layouts: Box Model, Display-Typen, Positioning und Overflow. Diese Konzepte sind die Basis für Flexbox und Grid.</p>
+    </div>
+
+    <!-- Einführung -->
+    <section class="content-section reveal" id="einfuehrung">
+      <h2>📖 Layout-Fundamente</h2>
+      <p>In CSS gibt es verschiedene Wege, um Elemente auf einer Seite anzuordnen. Die wichtigsten Konzepte sind:</p>
+      <ul>
+        <li><strong>Box Model:</strong> Wie Margin, Border, Padding und Content zusammenhängen</li>
+        <li><strong>Display:</strong> Wie Elemente in der normalen Dokumentenfluss angeordnet werden</li>
+        <li><strong>Positioning:</strong> Absolute und relative Positionierung von Elementen</li>
+        <li><strong>Flexbox & Grid:</strong> Moderne Layout-Methoden (siehe spätere Module)</li>
+      </ul>
+      <div class="info-box info">
+        <strong>💡 Tipp:</strong> Moderne Websites verwenden hauptsächlich <strong>Flexbox</strong> und <strong>CSS Grid</strong> für Layouts. Aber die Grundlagen hier sind immer noch wichtig!
+      </div>
+    </section>
+
+    <!-- Box Model -->
+    <section class="content-section reveal" id="box-model">
+      <h2>📦 Das Box Model</h2>
+      <p>Alle HTML-Elemente werden in CSS als rechteckige Boxen dargestellt. Das Box Model beschreibt, aus welchen Teilen diese Boxen bestehen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Das Box Model von außen nach innen: */
+.box {
+  /* Margin: Abstand nach außen (transparent) */
+  margin: 20px;
+  
+  /* Border: Linie um die Box */
+  border: 2px solid #333;
+  
+  /* Padding: Abstand nach innen (hat Background-Farbe) */
+  padding: 15px;
+  
+  /* Content: Der eigentliche Inhalt */
+  width: 200px;
+  height: 100px;
+  background-color: #3b82f6;
+}
+
+/* Kurz-Schreibweisen */
+margin: 10px 20px;        /* oben/unten 10px, links/rechts 20px */
+margin: 10px 20px 30px 40px; /* oben, rechts, unten, links (clockwise) */
+padding: 15px;            /* überall 15px */</code></pre>
+      </div>
+      <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); border-radius: 8px; padding: 20px; margin-top: 20px;">
+        <p style="margin: 0 0 15px 0;">Gesamtgröße berechnen:</p>
+        <p style="margin: 0; font-family: var(--font-mono); text-align: center; font-size: 0.9rem;">
+          Breite = Margin-left + Border + Padding + Width + Padding + Border + Margin-right
+        </p>
+      </div>
+    </section>
+
+    <!-- Inline vs Block -->
+    <section class="content-section reveal" id="inline-vs-block">
+      <h2>📌 Inline vs Block-Elemente</h2>
+      <p>HTML-Elemente verhalten sich standardmäßig entweder als Block- oder Inline-Elemente:</p>
+      <table style="width: 100%; margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>Block-Elemente</th>
+            <th>Inline-Elemente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nehmen die ganze Breite ein</td>
+            <td>Nur so breit wie nötig</td>
+          </tr>
+          <tr>
+            <td>Margin und Padding wirken</td>
+            <td>Vertikales Margin/Padding wirkt nicht</td>
+          </tr>
+          <tr>
+            <td>Beispiele: &lt;div&gt;, &lt;p&gt;, &lt;h1-h6&gt;, &lt;ul&gt;</td>
+            <td>Beispiele: &lt;span&gt;, &lt;a&gt;, &lt;button&gt;, &lt;img&gt;</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-block-wrapper" style="margin-top: 15px;">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Display-Eigenschaft ändern */
+span {
+  display: block;           /* Inline-Element zu Block */
+}
+
+div {
+  display: inline;          /* Block-Element zu Inline */
+}
+
+a {
+  display: inline-block;    /* Beste von beiden Welten! */
+  padding: 10px 15px;       /* Jetzt wirkt Padding! */
+  margin: 5px;              /* Und Margin auch! */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Display -->
+    <section class="content-section reveal" id="display">
+      <h2>🖥️ Die Display-Eigenschaft</h2>
+      <p>Mit der display-Eigenschaft kontrollierst du, wie ein Element in den Dokumentenfluss passt:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Wichtige Display-Werte */
+
+/* block: Vollständige Zeile */
+.block { display: block; }
+
+/* inline: Neben- bzw. Fließtext */
+.inline { display: inline; }
+
+/* inline-block: Block in Inline-Flow */
+.inline-block { display: inline-block; }
+
+/* none: Element wird nicht angezeigt */
+.hidden { display: none; }
+
+/* flex: Flexbox Layout (sehr wichtig!) */
+.container { display: flex; }
+
+/* grid: CSS Grid Layout (sehr wichtig!) */
+.grid { display: grid; }
+
+/* table: Wie HTML-Tabelle */
+.table { display: table; }</code></pre>
+      </div>
+    </section>
+
+    <!-- Positioning -->
+    <section class="content-section reveal" id="positioning">
+      <h2>📍 Positioning</h2>
+      <p>Mit positioning kannst du Elemente von ihrem normalen Platz im Dokumentenfluss wegschieben:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Position-Werte */
+
+/* static (Standard): Normal im Flow */
+.static { position: static; }
+
+/* relative: Relativ zur ursprünglichen Position */
+.relative { 
+  position: relative;
+  top: 20px;      /* 20px nach unten */
+  left: 30px;     /* 30px nach rechts */
+}
+
+/* absolute: Relativ zum nächsten positioned Eltern-Element */
+.container {
+  position: relative;    /* Anchor für absolute Kinder */
+  width: 200px;
+  height: 200px;
+}
+
+.absolute {
+  position: absolute;
+  top: 10px;             /* 10px vom oben des Containers */
+  left: 10px;            /* 10px vom linken Ende des Containers */
+  width: 50px;
+  height: 50px;
+}
+
+/* fixed: Bleibt beim Scrollen an Position */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;           /* Über der ganzen Seite */
+}
+
+/* sticky: Wechselt zwischen relative und fixed */
+.sticky-header {
+  position: sticky;
+  top: 0;                /* Fixiert oben wenn Seite scrollt */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Z-Index -->
+    <section class="content-section reveal" id="z-index">
+      <h2>🎯 Z-Index und Stacking-Kontext</h2>
+      <p>Z-Index kontrolliert, welche Elemente oben oder unten liegen, wenn sie sich überlappen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Z-Index funktioniert nur mit positionierten Elementen */
+.box-1 {
+  position: relative;
+  z-index: 10;    /* Liegt oben */
+  background: blue;
+}
+
+.box-2 {
+  position: relative;
+  z-index: 5;     /* Liegt darunter */
+  background: red;
+}
+
+.box-3 {
+  position: relative;
+  z-index: 1;     /* Liegt ganz unten */
+  background: green;
+}
+
+/* Höherer Z-Index = weiter oben */
+/* Standard Z-Index = auto (0) */
+
+/* Wichtig: Z-Index nur zwischen positioned Elementen */
+.static-element {
+  position: static;
+  z-index: 9999;  /* Funktioniert NICHT! */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Overflow -->
+    <section class="content-section reveal" id="overflow">
+      <h2>⊕ Overflow – Was passiert bei zu viel Inhalt?</h2>
+      <p>Wenn Inhalt größer als sein Container ist, kannst du mit overflow kontrollieren, was passiert:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">/* Overflow-Werte */
+
+/* visible (Standard): Inhalt überläuft den Container */
+.visible {
+  overflow: visible;
+  width: 200px;
+  height: 100px;
+}
+
+/* hidden: Überlaufender Inhalt wird abgeschnitten */
+.hidden {
+  overflow: hidden;
+  width: 200px;
+  height: 100px;
+}
+
+/* scroll: Scrollbars werden hinzugefügt */
+.scroll {
+  overflow: scroll;
+  width: 200px;
+  height: 100px;
+}
+
+/* auto: Scrollbars nur wenn nötig */
+.auto {
+  overflow: auto;
+  width: 200px;
+  height: 100px;
+}
+
+/* Separate Kontrolle für x und y */
+.box {
+  overflow-x: hidden;     /* Horizontal abschneiden */
+  overflow-y: auto;       /* Vertikal scrollbar nur wenn nötig */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Container -->
+    <section class="content-section reveal" id="container">
+      <h2>🔲 Container und Best Practices</h2>
+      <p>Ein wichtiges Konzept ist der "Container" – ein äußeres Div, das andere Elemente gruppiert und begrenzt:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;div class="container"&gt;
+  &lt;div class="content"&gt;
+    &lt;h1&gt;Titel&lt;/h1&gt;
+    &lt;p&gt;Inhalt...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+.container {
+  max-width: 1200px;     /* Maximale Breite */
+  margin: 0 auto;        /* Horizontal zentriert */
+  padding: 40px 20px;    /* Abstand innen */
+}
+
+.content {
+  width: 100%;           /* Füllt den Container */
+}</code></pre>
+      </div>
+      <div class="info-box success">
+        <strong>✅ Best Practice:</strong> Verwende Container um deinen Inhalt zu begrenzen und Abstände konsistent zu halten. Das ist die Basis vieler moderner Websites.
+      </div>
+    </section>
+
+    <!-- Praxis-Beispiel -->
+    <section class="content-section reveal">
+      <h2>🎯 Praktisches Beispiel: Komplexes Layout</h2>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;body&gt;
+  &lt;header class="header"&gt;Navigation&lt;/header&gt;
+  &lt;main class="main-content"&gt;
+    &lt;aside class="sidebar"&gt;Sidebar&lt;/aside&gt;
+    &lt;section class="content"&gt;Hauptinhalt&lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer class="footer"&gt;Footer&lt;/footer&gt;
+&lt;/body&gt;
+
+&lt;!-- CSS --&gt;
+* { box-sizing: border-box; }
+
+.header {
+  position: sticky;
+  top: 0;
+  background: #333;
+  padding: 20px;
+  z-index: 100;
+}
+
+.main-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.footer {
+  background: #222;
+  padding: 40px;
+  text-align: center;
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Nächste Schritte -->
+    <section class="content-section reveal" style="background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent-cyan); padding: 20px;">
+      <h3>📚 Was kommt als nächstes?</h3>
+      <p>Jetzt dass du die Layout-Grundlagen kennst, bist du bereit für modernere Techniken:</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+        <a href="flexbox.html" class="btn btn-secondary" style="text-align: center;">↔️ Flexbox Guide</a>
+        <a href="css-grid.html" class="btn btn-secondary" style="text-align: center;">⊞ CSS Grid Guide</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>HTML</h4>
+        <ul>
+          <li><a href="html-grundlagen.html">HTML Grundlagen</a></li>
+          <li><a href="html-tags.html">HTML Tags</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CSS</h4>
+        <ul>
+          <li><a href="css-grundlagen.html">CSS Grundlagen</a></li>
+          <li><a href="css-layouts.html">CSS Layouts</a></li>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="css-grid.html">CSS Grid</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

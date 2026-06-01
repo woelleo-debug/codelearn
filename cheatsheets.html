@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML & CSS Cheatsheets – Schnelle Referenz für alle wichtigen HTML-Tags und CSS-Properties.">
+  <title>Cheatsheets – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <style>
+    .cheatsheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .cheatsheet-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .cheatsheet-box h3 {
+      margin-bottom: 1rem;
+      color: var(--accent-cyan);
+    }
+    
+    .cheatsheet-table {
+      width: 100%;
+      margin: 1rem 0;
+    }
+    
+    .cheatsheet-table td {
+      padding: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    
+    .cheatsheet-table code {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html" class="active">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="quiz.html">🧠 Quiz</a>
+  <a href="cheatsheets.html" class="active">📋 Cheatsheets</a>
+</div>
+
+<main style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
+  <div class="page-header reveal" style="margin-bottom: 3rem;">
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <span class="badge badge-cyan">Referenz</span>
+      <span class="badge badge-green">Quick Access</span>
+      <span class="badge badge-purple">30+ Commands</span>
+    </div>
+    <h1>HTML & CSS <span class="gradient-text">Cheatsheets</span></h1>
+    <p>Schnelle Referenzblätter für alle wichtigen HTML-Tags und CSS-Properties. Perfekt zum schnellen Nachschlagen!</p>
+  </div>
+
+  <!-- HTML Tags Cheatsheet -->
+  <section class="reveal" style="margin-bottom: 3rem;">
+    <h2 style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+      📄 HTML Tags Cheatsheet
+    </h2>
+    
+    <div class="cheatsheet-grid">
+      <div class="cheatsheet-box">
+        <h3>Struktur & Semantik</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>&lt;html&gt;</code></td><td>Wurzelelement</td></tr>
+          <tr><td><code>&lt;head&gt;</code></td><td>Metadaten</td></tr>
+          <tr><td><code>&lt;body&gt;</code></td><td>Sichtbarer Inhalt</td></tr>
+          <tr><td><code>&lt;header&gt;</code></td><td>Kopfbereich</td></tr>
+          <tr><td><code>&lt;nav&gt;</code></td><td>Navigation</td></tr>
+          <tr><td><code>&lt;main&gt;</code></td><td>Hauptinhalt</td></tr>
+          <tr><td><code>&lt;section&gt;</code></td><td>Inhaltsbereich</td></tr>
+          <tr><td><code>&lt;article&gt;</code></td><td>Artikel/Post</td></tr>
+          <tr><td><code>&lt;aside&gt;</code></td><td>Seitenleiste</td></tr>
+          <tr><td><code>&lt;footer&gt;</code></td><td>Fußzeile</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Text & Überschriften</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>&lt;h1&gt;...&lt;/h1&gt;</code></td><td>Überschrift Level 1</td></tr>
+          <tr><td><code>&lt;h2&gt;...&lt;/h2&gt;</code></td><td>Überschrift Level 2</td></tr>
+          <tr><td><code>&lt;p&gt;</code></td><td>Absatz</td></tr>
+          <tr><td><code>&lt;strong&gt;</code></td><td>Wichtig (bold)</td></tr>
+          <tr><td><code>&lt;em&gt;</code></td><td>Hervorgehoben (italic)</td></tr>
+          <tr><td><code>&lt;br&gt;</code></td><td>Zeilenumbruch</td></tr>
+          <tr><td><code>&lt;hr&gt;</code></td><td>Horizontale Linie</td></tr>
+          <tr><td><code>&lt;blockquote&gt;</code></td><td>Zitat</td></tr>
+          <tr><td><code>&lt;code&gt;</code></td><td>Quellcode</td></tr>
+          <tr><td><code>&lt;small&gt;</code></td><td>Kleiner Text</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Listen & Tabellen</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>&lt;ul&gt;</code></td><td>Ungeordnete Liste</td></tr>
+          <tr><td><code>&lt;ol&gt;</code></td><td>Geordnete Liste</td></tr>
+          <tr><td><code>&lt;li&gt;</code></td><td>Listenelement</td></tr>
+          <tr><td><code>&lt;dl&gt;</code></td><td>Definition Liste</td></tr>
+          <tr><td><code>&lt;dt&gt;</code></td><td>Definition Term</td></tr>
+          <tr><td><code>&lt;dd&gt;</code></td><td>Definition</td></tr>
+          <tr><td><code>&lt;table&gt;</code></td><td>Tabelle</td></tr>
+          <tr><td><code>&lt;tr&gt;</code></td><td>Tabellenreihe</td></tr>
+          <tr><td><code>&lt;td&gt;</code></td><td>Tabellenzelle</td></tr>
+          <tr><td><code>&lt;th&gt;</code></td><td>Tabellenkopf</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Formulare</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>&lt;form&gt;</code></td><td>Formular-Container</td></tr>
+          <tr><td><code>&lt;input&gt;</code></td><td>Eingabefeld</td></tr>
+          <tr><td><code>&lt;textarea&gt;</code></td><td>Mehrzeilig Text</td></tr>
+          <tr><td><code>&lt;button&gt;</code></td><td>Button</td></tr>
+          <tr><td><code>&lt;select&gt;</code></td><td>Dropdown</td></tr>
+          <tr><td><code>&lt;option&gt;</code></td><td>Select-Option</td></tr>
+          <tr><td><code>&lt;label&gt;</code></td><td>Label für Input</td></tr>
+          <tr><td><code>&lt;fieldset&gt;</code></td><td>Gruppe Inputs</td></tr>
+          <tr><td><code>&lt;legend&gt;</code></td><td>Fieldset-Titel</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Media & Links</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>&lt;a href="..."&gt;</code></td><td>Link</td></tr>
+          <tr><td><code>&lt;img src="..."&gt;</code></td><td>Bild</td></tr>
+          <tr><td><code>&lt;video&gt;</code></td><td>Video</td></tr>
+          <tr><td><code>&lt;audio&gt;</code></td><td>Audio</td></tr>
+          <tr><td><code>&lt;source&gt;</code></td><td>Media-Quelle</td></tr>
+          <tr><td><code>&lt;picture&gt;</code></td><td>Responsive Bilder</td></tr>
+          <tr><td><code>&lt;figure&gt;</code></td><td>Abbildung</td></tr>
+          <tr><td><code>&lt;figcaption&gt;</code></td><td>Abbildung Caption</td></tr>
+          <tr><td><code>&lt;embed&gt;</code></td><td>Embed-Datei</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Meta & Attribute</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>&lt;meta&gt;</code></td><td>Metadaten</td></tr>
+          <tr><td><code>&lt;title&gt;</code></td><td>Seitentitel</td></tr>
+          <tr><td><code>&lt;link&gt;</code></td><td>Externe Ressource</td></tr>
+          <tr><td><code>&lt;style&gt;</code></td><td>Internes CSS</td></tr>
+          <tr><td><code>&lt;script&gt;</code></td><td>JavaScript</td></tr>
+          <tr><td><code>id="..."</code></td><td>Eindeutige ID</td></tr>
+          <tr><td><code>class="..."</code></td><td>CSS-Klasse</td></tr>
+          <tr><td><code>data-*</code></td><td>Custom Attribute</td></tr>
+          <tr><td><code>aria-*</code></td><td>Accessibility</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CSS Properties Cheatsheet -->
+  <section class="reveal" style="margin-bottom: 3rem;">
+    <h2 style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+      🎨 CSS Properties Cheatsheet
+    </h2>
+    
+    <div class="cheatsheet-grid">
+      <div class="cheatsheet-box">
+        <h3>Text & Schrift</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>font-family: Arial;</code></td><td>Schriftart</td></tr>
+          <tr><td><code>font-size: 16px;</code></td><td>Schriftgröße</td></tr>
+          <tr><td><code>font-weight: bold;</code></td><td>Schriftstärke</td></tr>
+          <tr><td><code>font-style: italic;</code></td><td>Schriftstil</td></tr>
+          <tr><td><code>color: #333;</code></td><td>Textfarbe</td></tr>
+          <tr><td><code>text-align: center;</code></td><td>Text ausrichten</td></tr>
+          <tr><td><code>text-decoration: none;</code></td><td>Text-Dekoration</td></tr>
+          <tr><td><code>line-height: 1.6;</code></td><td>Zeilenhöhe</td></tr>
+          <tr><td><code>letter-spacing: 2px;</code></td><td>Buchstabenabstand</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Box Model</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>margin: 20px;</code></td><td>Abstand außen</td></tr>
+          <tr><td><code>padding: 15px;</code></td><td>Abstand innen</td></tr>
+          <tr><td><code>border: 1px solid;</code></td><td>Rahmen</td></tr>
+          <tr><td><code>width: 100%;</code></td><td>Breite</td></tr>
+          <tr><td><code>height: 200px;</code></td><td>Höhe</td></tr>
+          <tr><td><code>box-sizing: border-box;</code></td><td>Größen-Berechnung</td></tr>
+          <tr><td><code>background: #fff;</code></td><td>Hintergrund</td></tr>
+          <tr><td><code>border-radius: 10px;</code></td><td>Eckenradius</td></tr>
+          <tr><td><code>box-shadow: 0 2px 5px;</code></td><td>Schatten</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Display & Layout</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>display: flex;</code></td><td>Flexbox</td></tr>
+          <tr><td><code>display: grid;</code></td><td>CSS Grid</td></tr>
+          <tr><td><code>display: block;</code></td><td>Block-Element</td></tr>
+          <tr><td><code>display: inline;</code></td><td>Inline-Element</td></tr>
+          <tr><td><code>display: inline-block;</code></td><td>Inline-Block</td></tr>
+          <tr><td><code>display: none;</code></td><td>Versteckt</td></tr>
+          <tr><td><code>visibility: hidden;</code></td><td>Unsichtbar</td></tr>
+          <tr><td><code>float: left;</code></td><td>Float (veraltet)</td></tr>
+          <tr><td><code>position: relative;</code></td><td>Positioning</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Flexbox Properties</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>justify-content: center;</code></td><td>Hauptachse</td></tr>
+          <tr><td><code>align-items: center;</code></td><td>Nebenachse</td></tr>
+          <tr><td><code>flex-direction: column;</code></td><td>Richtung</td></tr>
+          <tr><td><code>flex-wrap: wrap;</code></td><td>Umbruch</td></tr>
+          <tr><td><code>gap: 20px;</code></td><td>Abstände</td></tr>
+          <tr><td><code>flex: 1;</code></td><td>Flexibel wachsen</td></tr>
+          <tr><td><code>align-self: center;</code></td><td>Einzeln ausrichten</td></tr>
+          <tr><td><code>flex-grow: 1;</code></td><td>Wachstum</td></tr>
+          <tr><td><code>flex-basis: 100px;</code></td><td>Basis-Größe</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Animationen & Effekte</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>transition: all 0.3s;</code></td><td>Übergang</td></tr>
+          <tr><td><code>animation: name 1s;</code></td><td>Animation</td></tr>
+          <tr><td><code>transform: scale(1.1);</code></td><td>Transformieren</td></tr>
+          <tr><td><code>opacity: 0.5;</code></td><td>Deckkraft</td></tr>
+          <tr><td><code>filter: blur(5px);</code></td><td>Filter</td></tr>
+          <tr><td><code>backdrop-filter: blur();</code></td><td>Hintergrund-Filter</td></tr>
+          <tr><td><code>cursor: pointer;</code></td><td>Cursor-Stil</td></tr>
+          <tr><td><code>z-index: 10;</code></td><td>Stapelreihenfolge</td></tr>
+        </table>
+      </div>
+
+      <div class="cheatsheet-box">
+        <h3>Responsive & Media</h3>
+        <table class="cheatsheet-table">
+          <tr><td><code>@media (max-width: 768px)</code></td><td>Media Query</td></tr>
+          <tr><td><code>max-width: 1200px;</code></td><td>Max-Breite</td></tr>
+          <tr><td><code>width: 100%;</code></td><td>Volle Breite</td></tr>
+          <tr><td><code>aspect-ratio: 16/9;</code></td><td>Seitenverhältnis</td></tr>
+          <tr><td><code>object-fit: cover;</code></td><td>Bild-Fit</td></tr>
+          <tr><td><code>object-position: center;</code></td><td>Bild-Position</td></tr>
+          <tr><td><code>clamp(1rem, 2vw, 3rem)</code></td><td>Responsive-Größe</td></tr>
+          <tr><td><code>min-height: 100vh;</code></td><td>Min-Höhe</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schnelle Snippets -->
+  <section class="reveal" style="margin-bottom: 3rem;">
+    <h2 style="margin-bottom: 1.5rem;">⚡ Schnelle Code-Snippets</h2>
+    
+    <div style="display: grid; gap: 2rem;">
+      <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem;">
+        <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">✅ Gutes HTML Template</h3>
+        <div class="code-block-wrapper">
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Beschreibung"&gt;
+  &lt;title&gt;Seitentitel&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+  &lt;main&gt;...&lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem;">
+        <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">✅ Container & Layout Basics</h3>
+        <div class="code-block-wrapper">
+          <pre><code class="language-css">* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}</code></pre>
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem;">
+        <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">✅ Perfect Centering</h3>
+        <div class="code-block-wrapper">
+          <pre><code class="language-css">/* Flexbox Zentrierung */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Oder Grid */
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Lernmodule</h4>
+        <ul>
+          <li><a href="html-grundlagen.html">HTML Grundlagen</a></li>
+          <li><a href="css-grundlagen.html">CSS Grundlagen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="cheatsheets.html">Cheatsheets</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

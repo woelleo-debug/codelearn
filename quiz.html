@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CodeLearn Quiz - Kategorien, Schwierigkeit, XP und moderne Quiz-Oberfläche.">
+  <title>Quiz - CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="quiz-editor.css">
+</head>
+<body data-quiz-page="menu">
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html" class="active">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="projekte.html#code-editor" class="btn-nav">Code Editor</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">HTML Grundlagen</a>
+  <a href="css-grundlagen.html">CSS Grundlagen</a>
+  <a href="flexbox.html">Flexbox</a>
+  <a href="css-grid.html">CSS Grid</a>
+  <a href="animationen.html">Animationen</a>
+  <a href="projekte.html">Projekte</a>
+  <a href="quiz.html" class="active">Quiz</a>
+  <a href="cheatsheets.html">Cheatsheets</a>
+</div>
+
+<main class="quiz-shell">
+  <section class="quiz-hero-card reveal">
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <span class="badge badge-cyan">Interaktiv</span>
+      <span class="badge badge-purple"><span id="quiz-question-count">0</span> Fragen</span>
+      <span class="badge badge-green">XP System</span>
+    </div>
+    <h1>CodeLearn <span class="gradient-text">Quiz</span></h1>
+    <p>Wähle Modus, Kategorie und Schwierigkeit. Das Quiz lädt die Fragen aus der JSON-Struktur, wertet Antworten sofort aus und speichert Fortschritt lokal.</p>
+
+    <div class="quiz-stats-strip">
+      <span class="quiz-stat-pill">XP: <strong id="quiz-total-xp">0</strong></span>
+      <span class="quiz-stat-pill">Bestscore: <strong id="quiz-best-score">0%</strong></span>
+      <span class="quiz-stat-pill">Durchläufe: <strong id="quiz-total-runs">0</strong></span>
+    </div>
+
+    <form id="quiz-start-form">
+      <div class="quiz-menu-grid">
+        <div class="quiz-field">
+          <label for="quiz-mode">Modus</label>
+          <select id="quiz-mode">
+            <option value="normal">Normal - 15 Fragen</option>
+            <option value="time">Zeitmodus - Timer und Bonus</option>
+            <option value="hardcore">Hardcore - schwere Fragen</option>
+            <option value="daily">Daily - 5 schnelle Fragen</option>
+            <option value="exam">Prüfung - 25 Fragen</option>
+          </select>
+        </div>
+        <div class="quiz-field">
+          <label for="quiz-category">Kategorie</label>
+          <select id="quiz-category">
+            <option value="all">Alle Kategorien</option>
+          </select>
+        </div>
+        <div class="quiz-field">
+          <label for="quiz-difficulty">Schwierigkeit</label>
+          <select id="quiz-difficulty">
+            <option value="all">Alle Stufen</option>
+            <option value="leicht">Leicht</option>
+            <option value="mittel">Mittel</option>
+            <option value="schwer">Schwer</option>
+          </select>
+        </div>
+        <div class="quiz-field">
+          <label for="quiz-count">Anzahl Fragen</label>
+          <input type="number" id="quiz-count" min="1" max="100" value="15">
+        </div>
+      </div>
+      <div class="quiz-actions">
+        <button class="btn btn-primary btn-lg" type="submit">Quiz starten</button>
+        <a class="btn btn-secondary btn-lg" href="projekte.html#code-editor">Im Code Editor üben</a>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Lerne HTML & CSS interaktiv.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+<script src="main.js"></script>
+<script src="quiz-app.js"></script>
+</body>
+</html>
+

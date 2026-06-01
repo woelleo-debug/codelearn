@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Flexbox Guide – Lerne alle Flexbox-Properties, Beispiele und wie du flexible Layouts erstellst.">
+  <title>Flexbox Guide – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html" class="active">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html" class="active">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar" aria-label="Kapitel-Navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Flexbox Guide</div>
+      <a href="#einfuehrung" class="sidebar-link active">📖 Einführung</a>
+      <a href="#display-flex" class="sidebar-link">🖥️ Display Flex</a>
+      <a href="#flex-direction" class="sidebar-link">↕️ Flex Direction</a>
+      <a href="#justify-content" class="sidebar-link">←→ Justify Content</a>
+      <a href="#align-items" class="sidebar-link">↑↓ Align Items</a>
+      <a href="#align-self" class="sidebar-link">↪️ Align Self</a>
+      <a href="#flex-wrap" class="sidebar-link">📏 Flex Wrap</a>
+      <a href="#flex-properties" class="sidebar-link">⚙️ Flex Properties</a>
+      <a href="#gap" class="sidebar-link">➕ Gap</a>
+      <a href="#projekte" class="sidebar-link">🎯 Praktische Beispiele</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Weiter lernen</div>
+      <a href="css-grid.html" class="sidebar-link">⊞ CSS Grid</a>
+      <a href="responsive.html" class="sidebar-link">📱 Responsive Design</a>
+    </div>
+  </aside>
+
+  <main class="page-content">
+    <div class="page-header reveal">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-cyan">CSS</span>
+        <span class="badge badge-green">Mittel</span>
+        <span class="badge badge-purple">15 Properties</span>
+      </div>
+      <h1>Der komplette <span class="gradient-text">Flexbox Guide</span></h1>
+      <p>Flexbox ist eines der wichtigsten Layout-Tools im modernen CSS. Lerne alle Properties mit visuellen Beispielen und echtem Code. Nach diesem Modul kannst du responsive Layouts mit Flexbox erstellen.</p>
+    </div>
+
+    <!-- Einführung -->
+    <section class="content-section reveal" id="einfuehrung">
+      <h2>📖 Was ist Flexbox?</h2>
+      <p><strong>Flexbox</strong> (Flexible Box Layout) ist ein CSS Layout-Modul, das es dir ermöglicht, Elemente in einem Container auf flexible und effiziente Weise auszurichten und zu verteilen.</p>
+      <p><strong>Warum Flexbox?</strong></p>
+      <ul>
+        <li>Responsive Layouts ohne Media Queries (oft)</li>
+        <li>Elemente verteilen sich automatisch</li>
+        <li>Perfekte Zentrierung möglich</li>
+        <li>Flexible Reihenfolge ohne HTML ändern</li>
+        <li>Einfach und intuitiv</li>
+      </ul>
+      <div class="info-box info">
+        <strong>💡 Merke:</strong> Flexbox funktioniert auf <strong>einer Achse</strong> (horizontal oder vertikal). Für 2D-Layouts nutze CSS Grid.
+      </div>
+    </section>
+
+    <!-- Display Flex -->
+    <section class="content-section reveal" id="display-flex">
+      <h2>🖥️ Display: Flex</h2>
+      <p>Um Flexbox zu nutzen, setze <code>display: flex</code> auf einem Container:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- HTML --&gt;
+&lt;div class="flex-container"&gt;
+  &lt;div class="item"&gt;Item 1&lt;/div&gt;
+  &lt;div class="item"&gt;Item 2&lt;/div&gt;
+  &lt;div class="item"&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+.flex-container {
+  display: flex;              /* Aktiviert Flexbox */
+  gap: 10px;                  /* Abstand zwischen Kindern */
+  border: 2px solid #333;
+  padding: 10px;
+}
+
+.item {
+  background: #3b82f6;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+}</code></pre>
+      </div>
+      <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent-blue); border-radius: 8px; padding: 15px; margin-top: 15px;">
+        <strong>Ergebnis:</strong> Die 3 Elemente werden nebeneinander angeordnet (horizontal), nicht untereinander.
+      </div>
+    </section>
+
+    <!-- Flex Direction -->
+    <section class="content-section reveal" id="flex-direction">
+      <h2>↕️ Flex-Direction</h2>
+      <p>Mit <code>flex-direction</code> legst du fest, in welche Richtung Elemente angeordnet werden:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  
+  /* row (Standard): Horizontal, von links nach rechts */
+  flex-direction: row;
+  
+  /* column: Vertikal, von oben nach unten */
+  flex-direction: column;
+  
+  /* row-reverse: Horizontal, von rechts nach links */
+  flex-direction: row-reverse;
+  
+  /* column-reverse: Vertikal, von unten nach oben */
+  flex-direction: column-reverse;
+}</code></pre>
+      </div>
+      <table style="width: 100%; margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>Wert</th>
+            <th>Beschreibung</th>
+            <th>Hauptachse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>row</code></td>
+            <td>Standard – horizontal</td>
+            <td>Horizontal (links → rechts)</td>
+          </tr>
+          <tr>
+            <td><code>column</code></td>
+            <td>Vertikal</td>
+            <td>Vertikal (oben → unten)</td>
+          </tr>
+          <tr>
+            <td><code>row-reverse</code></td>
+            <td>Horizontal rückwärts</td>
+            <td>Horizontal (rechts → links)</td>
+          </tr>
+          <tr>
+            <td><code>column-reverse</code></td>
+            <td>Vertikal rückwärts</td>
+            <td>Vertikal (unten → oben)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Justify Content -->
+    <section class="content-section reveal" id="justify-content">
+      <h2>←→ Justify-Content (Hauptachse)</h2>
+      <p>Mit <code>justify-content</code> ordnest du Elemente entlang der <strong>Hauptachse</strong> an:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  width: 500px;
+  border: 2px solid #333;
+  
+  /* flex-start (Standard): Alle Items am Anfang */
+  justify-content: flex-start;
+  
+  /* flex-end: Alle Items am Ende */
+  justify-content: flex-end;
+  
+  /* center: Items zentriert */
+  justify-content: center;
+  
+  /* space-between: Gleichmäßig verteilt (erste/letzte am Rand) */
+  justify-content: space-between;
+  
+  /* space-around: Gleichmäßig mit Abstand rundherum */
+  justify-content: space-around;
+  
+  /* space-evenly: Perfekt gleichmäßig */
+  justify-content: space-evenly;
+}</code></pre>
+      </div>
+      <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); border-radius: 8px; padding: 15px; margin-top: 15px; font-family: var(--font-mono); font-size: 0.9rem;">
+        <p style="margin: 0 0 10px 0;"><strong>Visualisierung:</strong></p>
+        <p style="margin: 0;">flex-start: [A][B][C]___</p>
+        <p style="margin: 0;">flex-end: ___[A][B][C]</p>
+        <p style="margin: 0;">center: __[A][B][C]__</p>
+        <p style="margin: 0;">space-between: [A]__[B]__[C]</p>
+        <p style="margin: 0;">space-around: _[A]_[B]_[C]_</p>
+        <p style="margin: 0;">space-evenly: _[A]_[B]_[C]_</p>
+      </div>
+    </section>
+
+    <!-- Align Items -->
+    <section class="content-section reveal" id="align-items">
+      <h2>↑↓ Align-Items (Nebenachse)</h2>
+      <p>Mit <code>align-items</code> ordnest du Elemente entlang der <strong>Nebenachse</strong> an (senkrecht zur Hauptachse):</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  height: 200px;    /* Wichtig für align-items! */
+  border: 2px solid #333;
+  
+  /* stretch (Standard): Items strecken die ganze Höhe */
+  align-items: stretch;
+  
+  /* flex-start: Items oben */
+  align-items: flex-start;
+  
+  /* flex-end: Items unten */
+  align-items: flex-end;
+  
+  /* center: Items zentriert (vertikal!) */
+  align-items: center;
+  
+  /* baseline: Items auf Baseline ausrichten */
+  align-items: baseline;
+}</code></pre>
+      </div>
+      <div class="info-box success">
+        <strong>✅ Profi-Tipp:</strong> Verwende <code>display: flex; justify-content: center; align-items: center;</code> um Elemente perfekt zu zentrieren!
+      </div>
+    </section>
+
+    <!-- Align Self -->
+    <section class="content-section reveal" id="align-self">
+      <h2>↪️ Align-Self (Einzelne Items)</h2>
+      <p>Mit <code>align-self</code> kannst du ein einzelnes Item anders ausrichten als die anderen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  align-items: center;    /* Standard für alle */
+  height: 200px;
+}
+
+.item-1 {
+  align-self: flex-start;   /* Dieses Item oben */
+}
+
+.item-2 {
+  align-self: center;       /* Bleibt zentriert (Standard) */
+}
+
+.item-3 {
+  align-self: flex-end;     /* Dieses Item unten */
+}
+
+.item-4 {
+  align-self: stretch;      /* Füllt die ganze Höhe */
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Flex Wrap -->
+    <section class="content-section reveal" id="flex-wrap">
+      <h2>📏 Flex-Wrap</h2>
+      <p>Standardmäßig quetschen sich Flex-Items in eine Zeile. Mit <code>flex-wrap</code> kannst du Umbruch erlauben:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  width: 300px;    /* Nicht breit genug für alle Items */
+  
+  /* nowrap (Standard): Items quetschen sich in eine Zeile */
+  flex-wrap: nowrap;
+  
+  /* wrap: Items umbrechen zu nächster Zeile */
+  flex-wrap: wrap;
+  
+  /* wrap-reverse: Items umbrechen, aber rückwärts */
+  flex-wrap: wrap-reverse;
+}</code></pre>
+      </div>
+      <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent-blue); border-radius: 8px; padding: 15px; margin-top: 15px;">
+        <p style="margin: 0;"><strong>Beispiel:</strong> Wenn Container 300px breit und Items je 150px sind:</p>
+        <ul style="margin: 10px 0 0 0;">
+          <li><code>nowrap</code>: Alle 3 Items werden gequetscht in eine Zeile</li>
+          <li><code>wrap</code>: 2 Items in erste Zeile, 1 Item in zweite Zeile</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Flex Properties -->
+    <section class="content-section reveal" id="flex-properties">
+      <h2>⚙️ Flex, Flex-Grow, Flex-Shrink, Flex-Basis</h2>
+      <p>Diese Properties kontrollieren, wie Flex-Items Platz einnehmen:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  gap: 10px;
+}
+
+/* flex-basis: Initiale Größe vor flex-grow/shrink */
+.item-1 {
+  flex-basis: 100px;    /* Startet mit 100px */
+}
+
+/* flex-grow: Wie viel zusätzlichen Platz nimmt es ein? (0-1+) */
+.item-2 {
+  flex-grow: 1;         /* Nimmt 1 Teil zusätzlichen Platz */
+}
+
+.item-3 {
+  flex-grow: 2;         /* Nimmt 2 Teile zusätzlichen Platz (doppelt!) */
+}
+
+/* flex-shrink: Wie viel schrumpft es bei wenig Platz? */
+.item-4 {
+  flex-shrink: 0;       /* Schrumpft nicht */
+}
+
+/* Kurzform: flex = flex-grow flex-shrink flex-basis */
+.item {
+  flex: 1 0 100px;      /* grow=1, shrink=0, basis=100px */
+  flex: 1;              /* Gleichmäßig wachsen (grow=1) */
+}</code></pre>
+      </div>
+      <table style="width: 100%; margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Wert</th>
+            <th>Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>flex-grow</code></td>
+            <td>0-∞</td>
+            <td>Anteil beim Vergrößern (0 = nicht vergrößern)</td>
+          </tr>
+          <tr>
+            <td><code>flex-shrink</code></td>
+            <td>0-∞</td>
+            <td>Anteil beim Verkleinern (0 = nicht verkleinern)</td>
+          </tr>
+          <tr>
+            <td><code>flex-basis</code></td>
+            <td>auto, %,px</td>
+            <td>Basis-Größe vor grow/shrink</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Gap -->
+    <section class="content-section reveal" id="gap">
+      <h2>➕ Gap – Abstände zwischen Items</h2>
+      <p>Mit <code>gap</code> definierst du automatische Abstände zwischen Flex-Items:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-css">.container {
+  display: flex;
+  gap: 15px;              /* 15px Abstand überall */
+  
+  /* gap: row-gap column-gap */
+  gap: 10px 20px;         /* 10px vertikal, 20px horizontal */
+  
+  row-gap: 10px;          /* Abstand zwischen Zeilen */
+  column-gap: 20px;       /* Abstand zwischen Spalten */
+}
+
+.item {
+  padding: 10px;
+  background: #3b82f6;
+}</code></pre>
+      </div>
+      <div class="info-box info">
+        <strong>💡 Vorteil:</strong> <code>gap</code> ist besser als <code>margin</code>, weil es keinen Abstand am Anfang/Ende erzeugt.
+      </div>
+    </section>
+
+    <!-- Praktische Beispiele -->
+    <section class="content-section reveal" id="projekte">
+      <h2>🎯 Praktische Beispiele</h2>
+
+      <h3 style="margin-top: 2rem;">Beispiel 1: Navigationsleiste</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;nav class="navbar"&gt;
+  &lt;a href="/" class="logo"&gt;Logo&lt;/a&gt;
+  &lt;div class="nav-links"&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;About&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;button class="btn"&gt;Sign In&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;style&gt;
+.navbar {
+  display: flex;
+  justify-content: space-between;   /* Logo links, Content rechts */
+  align-items: center;               /* Alles vertikal zentriert */
+  gap: 20px;
+  padding: 15px 30px;
+  background: #333;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+&lt;/style&gt;</code></pre>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Beispiel 2: 3-Spalten Layout</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;div class="container"&gt;
+  &lt;aside class="sidebar"&gt;Sidebar&lt;/aside&gt;
+  &lt;main class="content"&gt;Hauptinhalt&lt;/main&gt;
+  &lt;aside class="sidebar-right"&gt;Sidebar&lt;/aside&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  width: 200px;          /* Feste Breite */
+}
+
+.sidebar-right {
+  width: 200px;
+}
+
+.content {
+  flex: 1;               /* Nimmt restlichen Platz */
+}
+
+/* Mobile: Stack vertikal */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar, .sidebar-right {
+    width: auto;
+  }
+}
+&lt;/style&gt;</code></pre>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Beispiel 3: Karten-Grid</h3>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML & CSS</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;div class="cards"&gt;
+  &lt;div class="card"&gt;Karte 1&lt;/div&gt;
+  &lt;div class="card"&gt;Karte 2&lt;/div&gt;
+  &lt;div class="card"&gt;Karte 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;       /* Umbruch erlauben */
+  justify-content: center;
+}
+
+.card {
+  flex: 0 1 calc(33.333% - 14px);  /* 3 pro Zeile */
+  min-height: 200px;
+  background: #3b82f6;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* 2 pro Zeile auf Tablet */
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 1 calc(50% - 10px);
+  }
+}
+
+/* 1 pro Zeile auf Mobile */
+@media (max-width: 640px) {
+  .card {
+    flex: 0 1 100%;
+  }
+}
+&lt;/style&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Zusammenfassung -->
+    <section class="content-section reveal" style="background: rgba(124, 58, 237, 0.05); border-left: 3px solid var(--accent-purple); padding: 20px;">
+      <h3>🎓 Zusammenfassung</h3>
+      <p><strong>Wichtigste Flexbox-Properties:</strong></p>
+      <ul>
+        <li><code>display: flex</code> – Aktiviert Flexbox</li>
+        <li><code>flex-direction</code> – Hauptachsen-Richtung</li>
+        <li><code>justify-content</code> – Ausrichtung auf Hauptachse</li>
+        <li><code>align-items</code> – Ausrichtung auf Nebenachse</li>
+        <li><code>flex-wrap</code> – Umbruch erlauben</li>
+        <li><code>gap</code> – Abstände zwischen Items</li>
+        <li><code>flex: 1</code> – Item wächst flexibel</li>
+      </ul>
+      <div style="margin-top: 15px;">
+        <a href="css-grid.html" class="btn btn-secondary">⊞ Nächstes Modul: CSS Grid</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>CSS</h4>
+        <ul>
+          <li><a href="css-grundlagen.html">CSS Grundlagen</a></li>
+          <li><a href="css-layouts.html">CSS Layouts</a></li>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="css-grid.html">CSS Grid</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <ul>
+          <li><a href="responsive.html">Responsive Design</a></li>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

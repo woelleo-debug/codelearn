@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML Grundlagen lernen – Dokumentstruktur, Tags, Attribute, Formulare und semantisches HTML mit Code-Beispielen.">
+  <title>HTML Grundlagen – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html" class="active">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="html-tags.html">🏷️ HTML Tags</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="page-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" aria-label="Kapitel-Navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">HTML Grundlagen</div>
+      <a href="#einfuehrung" class="sidebar-link active">📖 Einführung</a>
+      <a href="#dokumentstruktur" class="sidebar-link">🏗️ Dokumentstruktur</a>
+      <a href="#ueberschriften" class="sidebar-link">📝 Überschriften</a>
+      <a href="#text" class="sidebar-link">✍️ Text & Absätze</a>
+      <a href="#links" class="sidebar-link">🔗 Links</a>
+      <a href="#bilder" class="sidebar-link">🖼️ Bilder</a>
+      <a href="#listen" class="sidebar-link">📋 Listen</a>
+      <a href="#tabellen" class="sidebar-link">📊 Tabellen</a>
+      <a href="#formulare" class="sidebar-link">📝 Formulare</a>
+      <a href="#semantic" class="sidebar-link">🏷️ Semantic HTML</a>
+      <a href="#kommentare" class="sidebar-link">💬 Kommentare</a>
+      <a href="#best-practices" class="sidebar-link">⭐ Best Practices</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Weiter lernen</div>
+      <a href="html-tags.html" class="sidebar-link">🏷️ HTML Tags Übersicht</a>
+      <a href="css-grundlagen.html" class="sidebar-link">🎨 CSS Grundlagen</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <div class="page-header reveal">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="badge badge-cyan">HTML</span>
+        <span class="badge badge-green">Anfänger</span>
+        <span class="badge badge-blue">12 Kapitel</span>
+      </div>
+      <h1>HTML <span class="gradient-text">Grundlagen</span></h1>
+      <p>HTML (HyperText Markup Language) ist die Grundlage jeder Webseite. In diesem Modul lernst du alles von der Dokumentstruktur bis zu semantischen Elementen – mit echten Code-Beispielen und klaren Erklärungen.</p>
+    </div>
+
+    <!-- Einführung -->
+    <section class="content-section reveal" id="einfuehrung">
+      <h2>📖 Was ist HTML?</h2>
+      <p>HTML ist die Auszeichnungssprache des Webs. Sie beschreibt die <strong>Struktur</strong> und den <strong>Inhalt</strong> einer Webseite – nicht das Aussehen (das ist Aufgabe von CSS) und nicht das Verhalten (das ist JavaScript).</p>
+      <p>HTML besteht aus <strong>Tags</strong> (Elementen), die den Inhalt umschließen und ihm eine Bedeutung geben. Ein Tag sieht so aus:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Öffnendes Tag, Inhalt, schließendes Tag --&gt;
+&lt;p&gt;Das ist ein Absatz.&lt;/p&gt;
+
+&lt;!-- Tag mit Attribut --&gt;
+&lt;a href="https://example.com"&gt;Ein Link&lt;/a&gt;
+
+&lt;!-- Selbstschließendes Tag (kein Inhalt) --&gt;
+&lt;img src="bild.jpg" alt="Beschreibung"&gt;
+&lt;br&gt;
+&lt;hr&gt;</code></pre>
+      </div>
+      <div class="info-box info">
+        <strong>💡 Merke:</strong> HTML beschreibt <em>was</em> etwas ist (Überschrift, Absatz, Link), nicht <em>wie</em> es aussieht. Das Aussehen wird mit CSS gesteuert.
+      </div>
+    </section>
+
+    <!-- Dokumentstruktur -->
+    <section class="content-section reveal" id="dokumentstruktur">
+      <h2>🏗️ Die HTML-Dokumentstruktur</h2>
+      <p>Jede HTML-Seite hat eine grundlegende Struktur, die immer gleich ist. Diese Grundstruktur teilt dem Browser mit, wie er die Seite interpretieren soll.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Beschreibung der Seite für Suchmaschinen"&gt;
+  &lt;title&gt;Seitentitel – erscheint im Browser-Tab&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Hier kommt der sichtbare Inhalt --&gt;
+  &lt;h1&gt;Hallo Welt!&lt;/h1&gt;
+  &lt;p&gt;Das ist meine erste Webseite.&lt;/p&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+      <h3>Erklärung der Elemente:</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Element</th><th>Bedeutung</th></tr></thead>
+          <tbody>
+            <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Teilt dem Browser mit, dass es sich um HTML5 handelt</td></tr>
+            <tr><td><code>&lt;html lang="de"&gt;</code></td><td>Wurzelelement; lang-Attribut für Sprache (wichtig für Barrierefreiheit)</td></tr>
+            <tr><td><code>&lt;head&gt;</code></td><td>Enthält Metadaten – nicht sichtbar auf der Seite</td></tr>
+            <tr><td><code>&lt;meta charset="UTF-8"&gt;</code></td><td>Zeichenkodierung – ermöglicht Umlaute (ä, ö, ü)</td></tr>
+            <tr><td><code>&lt;meta name="viewport"&gt;</code></td><td>Wichtig für Responsive Design auf Mobilgeräten</td></tr>
+            <tr><td><code>&lt;title&gt;</code></td><td>Seitentitel im Browser-Tab und in Suchergebnissen</td></tr>
+            <tr><td><code>&lt;body&gt;</code></td><td>Enthält den gesamten sichtbaren Inhalt der Seite</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Überschriften -->
+    <section class="content-section reveal" id="ueberschriften">
+      <h2>📝 Überschriften (h1–h6)</h2>
+      <p>HTML bietet sechs Überschriften-Ebenen. <code>&lt;h1&gt;</code> ist die wichtigste (und größte), <code>&lt;h6&gt;</code> die unwichtigste. Verwende sie hierarchisch – nicht für das Aussehen, sondern für die Struktur.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;h1&gt;Hauptüberschrift (nur einmal pro Seite!)&lt;/h1&gt;
+&lt;h2&gt;Abschnittsüberschrift&lt;/h2&gt;
+&lt;h3&gt;Unterabschnitt&lt;/h3&gt;
+&lt;h4&gt;Noch tiefer&lt;/h4&gt;
+&lt;h5&gt;Sehr selten verwendet&lt;/h5&gt;
+&lt;h6&gt;Kleinste Überschrift&lt;/h6&gt;</code></pre>
+      </div>
+      <div class="info-box warning">
+        <strong>⚠️ SEO-Tipp:</strong> Verwende <code>&lt;h1&gt;</code> nur einmal pro Seite. Suchmaschinen nutzen Überschriften, um den Inhalt zu verstehen. Überspringe keine Ebenen (z.B. von h2 direkt zu h4).
+      </div>
+    </section>
+
+    <!-- Text -->
+    <section class="content-section reveal" id="text">
+      <h2>✍️ Text & Absätze</h2>
+      <p>Für Fließtext gibt es verschiedene HTML-Elemente, je nach Bedeutung des Textes.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Absatz --&gt;
+&lt;p&gt;Das ist ein normaler Absatz. Browser fügen automatisch
+Abstände zwischen Absätzen ein.&lt;/p&gt;
+
+&lt;!-- Fett (semantisch wichtig) --&gt;
+&lt;strong&gt;Wichtiger Text&lt;/strong&gt;
+
+&lt;!-- Kursiv (semantisch betont) --&gt;
+&lt;em&gt;Betonter Text&lt;/em&gt;
+
+&lt;!-- Nur visuell fett (keine semantische Bedeutung) --&gt;
+&lt;b&gt;Visuell fett&lt;/b&gt;
+
+&lt;!-- Nur visuell kursiv --&gt;
+&lt;i&gt;Visuell kursiv&lt;/i&gt;
+
+&lt;!-- Zeilenumbruch --&gt;
+&lt;br&gt;
+
+&lt;!-- Horizontale Linie --&gt;
+&lt;hr&gt;
+
+&lt;!-- Kleiner Text --&gt;
+&lt;small&gt;Kleingedrucktes, Copyright-Hinweise&lt;/small&gt;
+
+&lt;!-- Markierter Text --&gt;
+&lt;mark&gt;Hervorgehobener Text&lt;/mark&gt;
+
+&lt;!-- Durchgestrichener Text --&gt;
+&lt;del&gt;Gelöschter Text&lt;/del&gt;
+
+&lt;!-- Eingefügter Text --&gt;
+&lt;ins&gt;Eingefügter Text&lt;/ins&gt;
+
+&lt;!-- Code im Fließtext --&gt;
+&lt;code&gt;console.log('Hallo')&lt;/code&gt;
+
+&lt;!-- Zitat --&gt;
+&lt;blockquote cite="https://quelle.de"&gt;
+  Das ist ein längeres Zitat aus einer anderen Quelle.
+&lt;/blockquote&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section class="content-section reveal" id="links">
+      <h2>🔗 Links (Hyperlinks)</h2>
+      <p>Links sind das Herzstück des Webs. Mit dem <code>&lt;a&gt;</code>-Tag (Anchor) verlinkst du auf andere Seiten, Abschnitte oder Dateien.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Externer Link --&gt;
+&lt;a href="https://www.example.com"&gt;Externe Website&lt;/a&gt;
+
+&lt;!-- In neuem Tab öffnen (+ rel für Sicherheit) --&gt;
+&lt;a href="https://www.example.com" target="_blank" rel="noopener noreferrer"&gt;
+  Neuer Tab
+&lt;/a&gt;
+
+&lt;!-- Interner Link (andere Seite) --&gt;
+&lt;a href="kontakt.html"&gt;Zur Kontaktseite&lt;/a&gt;
+
+&lt;!-- Anker-Link (Sprung zu einem Abschnitt) --&gt;
+&lt;a href="#abschnitt"&gt;Zum Abschnitt springen&lt;/a&gt;
+&lt;section id="abschnitt"&gt;...&lt;/section&gt;
+
+&lt;!-- E-Mail-Link --&gt;
+&lt;a href="mailto:info@example.com"&gt;E-Mail senden&lt;/a&gt;
+
+&lt;!-- Telefon-Link (für Mobilgeräte) --&gt;
+&lt;a href="tel:+491234567890"&gt;Anrufen&lt;/a&gt;
+
+&lt;!-- Bild als Link --&gt;
+&lt;a href="index.html"&gt;
+  &lt;img src="logo.png" alt="Zur Startseite"&gt;
+&lt;/a&gt;</code></pre>
+      </div>
+      <div class="info-box tip">
+        <strong>🔒 Sicherheit:</strong> Bei <code>target="_blank"</code> immer <code>rel="noopener noreferrer"</code> hinzufügen. Das verhindert, dass die verlinkte Seite auf deine Seite zugreifen kann (Tabnapping-Angriff).
+      </div>
+    </section>
+
+    <!-- Bilder -->
+    <section class="content-section reveal" id="bilder">
+      <h2>🖼️ Bilder</h2>
+      <p>Bilder werden mit dem selbstschließenden <code>&lt;img&gt;</code>-Tag eingebunden. Das <code>alt</code>-Attribut ist Pflicht für Barrierefreiheit und SEO.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Einfaches Bild --&gt;
+&lt;img src="foto.jpg" alt="Beschreibung des Bildes"&gt;
+
+&lt;!-- Mit Breite und Höhe (verhindert Layout-Verschiebungen) --&gt;
+&lt;img src="foto.jpg" alt="Beschreibung" width="800" height="600"&gt;
+
+&lt;!-- Lazy Loading (Bild erst laden wenn sichtbar) --&gt;
+&lt;img src="foto.jpg" alt="Beschreibung" loading="lazy"&gt;
+
+&lt;!-- Bild mit Bildunterschrift --&gt;
+&lt;figure&gt;
+  &lt;img src="diagramm.png" alt="Umsatzdiagramm 2024"&gt;
+  &lt;figcaption&gt;Abb. 1: Umsatzentwicklung im Jahr 2024&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- Responsive Bilder mit srcset --&gt;
+&lt;img
+  src="bild-800.jpg"
+  srcset="bild-400.jpg 400w, bild-800.jpg 800w, bild-1200.jpg 1200w"
+  sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"
+  alt="Responsive Bild"
+&gt;</code></pre>
+      </div>
+      <div class="info-box info">
+        <strong>♿ Barrierefreiheit:</strong> Das <code>alt</code>-Attribut wird von Screenreadern vorgelesen. Beschreibe das Bild sinnvoll. Bei rein dekorativen Bildern: <code>alt=""</code> (leerer String, nicht weglassen!).
+      </div>
+    </section>
+
+    <!-- Listen -->
+    <section class="content-section reveal" id="listen">
+      <h2>📋 Listen</h2>
+      <p>HTML kennt drei Arten von Listen: ungeordnet, geordnet und Definitionslisten.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Ungeordnete Liste (Aufzählung mit Punkten) --&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Geordnete Liste (nummeriert) --&gt;
+&lt;ol&gt;
+  &lt;li&gt;HTML lernen&lt;/li&gt;
+  &lt;li&gt;CSS lernen&lt;/li&gt;
+  &lt;li&gt;Erstes Projekt bauen&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Geordnete Liste mit Startpunkt --&gt;
+&lt;ol start="5"&gt;
+  &lt;li&gt;Fünfter Punkt&lt;/li&gt;
+  &lt;li&gt;Sechster Punkt&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Verschachtelte Liste --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Frontend
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Backend&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Definitionsliste --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language – Struktur von Webseiten&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets – Aussehen von Webseiten&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Tabellen -->
+    <section class="content-section reveal" id="tabellen">
+      <h2>📊 Tabellen</h2>
+      <p>Tabellen sind für tabellarische Daten gedacht – nicht für Layouts! Eine vollständige Tabelle hat Kopfzeile, Körper und optional eine Fußzeile.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Monatliche Ausgaben&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Monat&lt;/th&gt;
+      &lt;th scope="col"&gt;Einnahmen&lt;/th&gt;
+      &lt;th scope="col"&gt;Ausgaben&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Januar&lt;/td&gt;
+      &lt;td&gt;3.500 €&lt;/td&gt;
+      &lt;td&gt;2.800 €&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Februar&lt;/td&gt;
+      &lt;td&gt;3.200 €&lt;/td&gt;
+      &lt;td&gt;2.600 €&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Gesamt&lt;/td&gt;
+      &lt;td&gt;6.700 €&lt;/td&gt;
+      &lt;td&gt;5.400 €&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+
+&lt;!-- Zellen verbinden --&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td colspan="2"&gt;Zwei Spalten breit&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;Zwei Zeilen hoch&lt;/td&gt;
+    &lt;td&gt;Normal&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Formulare -->
+    <section class="content-section reveal" id="formulare">
+      <h2>📝 Formulare</h2>
+      <p>Formulare ermöglichen Benutzereingaben. Sie bestehen aus dem <code>&lt;form&gt;</code>-Container und verschiedenen Eingabeelementen.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;form action="/senden" method="POST"&gt;
+
+  &lt;!-- Text-Eingabe --&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"
+         placeholder="Dein Name" required&gt;
+
+  &lt;!-- E-Mail --&gt;
+  &lt;label for="email"&gt;E-Mail:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;!-- Passwort --&gt;
+  &lt;label for="passwort"&gt;Passwort:&lt;/label&gt;
+  &lt;input type="password" id="passwort" name="passwort"
+         minlength="8" required&gt;
+
+  &lt;!-- Zahl --&gt;
+  &lt;label for="alter"&gt;Alter:&lt;/label&gt;
+  &lt;input type="number" id="alter" name="alter" min="0" max="120"&gt;
+
+  &lt;!-- Datum --&gt;
+  &lt;label for="datum"&gt;Datum:&lt;/label&gt;
+  &lt;input type="date" id="datum" name="datum"&gt;
+
+  &lt;!-- Textarea (mehrzeilig) --&gt;
+  &lt;label for="nachricht"&gt;Nachricht:&lt;/label&gt;
+  &lt;textarea id="nachricht" name="nachricht"
+            rows="5" placeholder="Deine Nachricht..."&gt;&lt;/textarea&gt;
+
+  &lt;!-- Dropdown --&gt;
+  &lt;label for="land"&gt;Land:&lt;/label&gt;
+  &lt;select id="land" name="land"&gt;
+    &lt;option value=""&gt;Bitte wählen&lt;/option&gt;
+    &lt;option value="de"&gt;Deutschland&lt;/option&gt;
+    &lt;option value="at"&gt;Österreich&lt;/option&gt;
+    &lt;option value="ch"&gt;Schweiz&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;!-- Checkboxen --&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Interessen:&lt;/legend&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" name="interesse" value="html"&gt; HTML
+    &lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" name="interesse" value="css"&gt; CSS
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;!-- Radio Buttons --&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Erfahrung:&lt;/legend&gt;
+    &lt;label&gt;
+      &lt;input type="radio" name="erfahrung" value="anfaenger"&gt; Anfänger
+    &lt;/label&gt;
+    &lt;label&gt;
+      &lt;input type="radio" name="erfahrung" value="fortgeschritten"&gt; Fortgeschritten
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;!-- Submit Button --&gt;
+  &lt;button type="submit"&gt;Absenden&lt;/button&gt;
+  &lt;button type="reset"&gt;Zurücksetzen&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+      </div>
+      <div class="info-box tip">
+        <strong>♿ Wichtig:</strong> Verknüpfe immer <code>&lt;label&gt;</code> mit dem zugehörigen Input über das <code>for</code>-Attribut (muss mit der <code>id</code> des Inputs übereinstimmen). Das ist wichtig für Barrierefreiheit und verbessert die Klickfläche.
+      </div>
+    </section>
+
+    <!-- Semantic HTML -->
+    <section class="content-section reveal" id="semantic">
+      <h2>🏷️ Semantisches HTML</h2>
+      <p>Semantische HTML-Elemente beschreiben ihre Bedeutung klar – sowohl für den Browser als auch für Entwickler und Suchmaschinen. Verwende sie statt generischer <code>&lt;div&gt;</code>-Elemente.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Seitenstruktur mit semantischen Elementen --&gt;
+&lt;header&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Startseite&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Artikel-Titel&lt;/h1&gt;
+      &lt;time datetime="2024-01-15"&gt;15. Januar 2024&lt;/time&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Artikel-Inhalt...&lt;/p&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Abschnitt im Artikel&lt;/h2&gt;
+      &lt;p&gt;Inhalt des Abschnitts...&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+
+  &lt;aside&gt;
+    &lt;h2&gt;Verwandte Artikel&lt;/h2&gt;
+    &lt;!-- Sidebar-Inhalt --&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;address&gt;
+    Kontakt: &lt;a href="mailto:info@example.com"&gt;info@example.com&lt;/a&gt;
+  &lt;/address&gt;
+  &lt;p&gt;&lt;small&gt;© 2024 Meine Website&lt;/small&gt;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+      </div>
+      <h3>Wichtige semantische Elemente:</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Element</th><th>Verwendung</th></tr></thead>
+          <tbody>
+            <tr><td><code>&lt;header&gt;</code></td><td>Kopfbereich der Seite oder eines Abschnitts</td></tr>
+            <tr><td><code>&lt;nav&gt;</code></td><td>Navigationsbereich mit Links</td></tr>
+            <tr><td><code>&lt;main&gt;</code></td><td>Hauptinhalt der Seite (nur einmal!)</td></tr>
+            <tr><td><code>&lt;article&gt;</code></td><td>Eigenständiger Inhalt (Blogpost, News-Artikel)</td></tr>
+            <tr><td><code>&lt;section&gt;</code></td><td>Thematischer Abschnitt mit Überschrift</td></tr>
+            <tr><td><code>&lt;aside&gt;</code></td><td>Ergänzender Inhalt (Sidebar, Werbung)</td></tr>
+            <tr><td><code>&lt;footer&gt;</code></td><td>Fußbereich der Seite oder eines Abschnitts</td></tr>
+            <tr><td><code>&lt;figure&gt;</code></td><td>Eigenständige Medieninhalte (Bilder, Diagramme)</td></tr>
+            <tr><td><code>&lt;figcaption&gt;</code></td><td>Bildunterschrift für &lt;figure&gt;</td></tr>
+            <tr><td><code>&lt;time&gt;</code></td><td>Datum/Uhrzeit (maschinenlesbar)</td></tr>
+            <tr><td><code>&lt;address&gt;</code></td><td>Kontaktinformationen</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Kommentare -->
+    <section class="content-section reveal" id="kommentare">
+      <h2>💬 Kommentare</h2>
+      <p>HTML-Kommentare sind für Entwickler gedacht und werden vom Browser nicht angezeigt. Sie helfen, den Code zu dokumentieren.</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span class="code-block-lang">HTML</span>
+          <button class="copy-btn">📋 Kopieren</button>
+        </div>
+        <pre><code class="language-html">&lt;!-- Das ist ein einzeiliger Kommentar --&gt;
+
+&lt;!--
+  Das ist ein
+  mehrzeiliger Kommentar
+--&gt;
+
+&lt;!-- Abschnitt: Navigation --&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+
+&lt;!-- TODO: Hier noch den Footer ergänzen --&gt;
+
+&lt;!-- Temporär auskommentierter Code:
+&lt;div class="banner"&gt;
+  &lt;p&gt;Werbebanner&lt;/p&gt;
+&lt;/div&gt;
+--&gt;</code></pre>
+      </div>
+      <div class="info-box warning">
+        <strong>⚠️ Achtung:</strong> HTML-Kommentare sind im Quellcode sichtbar! Schreibe keine sensiblen Informationen (Passwörter, API-Keys) in Kommentare.
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="content-section reveal" id="best-practices">
+      <h2>⭐ Best Practices</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>✅ Immer valides HTML schreiben</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Valides HTML wird von allen Browsern korrekt interpretiert. Nutze den <a href="https://validator.w3.org" target="_blank" rel="noopener">W3C Validator</a> um deinen Code zu prüfen.</p>
+              <ul>
+                <li>Immer <code>&lt;!DOCTYPE html&gt;</code> am Anfang</li>
+                <li>Tags korrekt schließen</li>
+                <li>Attribute in Anführungszeichen</li>
+                <li>Keine veralteten Tags wie <code>&lt;font&gt;</code> oder <code>&lt;center&gt;</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>♿ Barrierefreiheit (Accessibility)</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Barrierefreies HTML ist für alle Nutzer zugänglich – auch für Menschen mit Behinderungen.</p>
+              <ul>
+                <li>Immer <code>alt</code>-Attribute bei Bildern</li>
+                <li><code>lang</code>-Attribut am <code>&lt;html&gt;</code>-Tag</li>
+                <li>Labels für alle Formularfelder</li>
+                <li>Semantische Elemente statt <code>&lt;div&gt;</code></li>
+                <li>Ausreichende Farbkontraste</li>
+                <li>Tastaturnavigation ermöglichen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>🔍 SEO-freundliches HTML</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Suchmaschinen lesen deinen HTML-Code. Gutes HTML verbessert dein Ranking.</p>
+              <ul>
+                <li>Aussagekräftiger <code>&lt;title&gt;</code> (50-60 Zeichen)</li>
+                <li><code>&lt;meta name="description"&gt;</code> (150-160 Zeichen)</li>
+                <li>Nur ein <code>&lt;h1&gt;</code> pro Seite</li>
+                <li>Semantische Struktur mit <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code> etc.</li>
+                <li>Beschreibende Alt-Texte für Bilder</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>⚡ Performance</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Schnelle Webseiten haben bessere Rankings und zufriedenere Nutzer.</p>
+              <ul>
+                <li><code>loading="lazy"</code> für Bilder unterhalb des sichtbaren Bereichs</li>
+                <li>CSS im <code>&lt;head&gt;</code>, JavaScript am Ende des <code>&lt;body&gt;</code></li>
+                <li>Bilder in modernen Formaten (WebP, AVIF)</li>
+                <li><code>width</code> und <code>height</code> bei Bildern angeben</li>
+                <li>Externe Ressourcen minimieren</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Navigation -->
+    <nav class="page-nav" aria-label="Seitennavigation">
+      <a href="index.html" class="page-nav-btn">
+        <span class="page-nav-label">← Zurück</span>
+        <span class="page-nav-title">Startseite</span>
+      </a>
+      <a href="css-grundlagen.html" class="page-nav-btn next">
+        <span class="page-nav-label">Weiter →</span>
+        <span class="page-nav-title">CSS Grundlagen</span>
+      </a>
+    </nav>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>HTML</h4>
+        <ul>
+          <li><a href="html-grundlagen.html">HTML Grundlagen</a></li>
+          <li><a href="html-tags.html">HTML Tags</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CSS</h4>
+        <ul>
+          <li><a href="css-grundlagen.html">CSS Grundlagen</a></li>
+          <li><a href="flexbox.html">Flexbox</a></li>
+          <li><a href="css-grid.html">CSS Grid</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Mehr</h4>
+        <ul>
+          <li><a href="projekte.html">Projekte</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="cheatsheets.html">Cheatsheets</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

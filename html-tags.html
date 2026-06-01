@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vollständige HTML Tags Übersicht – alle wichtigen HTML-Elemente mit Beschreibung und Beispielen.">
+  <title>HTML Tags Übersicht – CodeLearn</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <style>
+    .tags-page { padding: calc(var(--navbar-height) + 3rem) var(--spacing-xl) var(--spacing-3xl); max-width: 1400px; margin: 0 auto; }
+    .tags-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+    .tag-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; transition: all var(--transition-base); }
+    .tag-item:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); }
+    .tag-item.hidden { display: none; }
+    .tag-name { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 0.4rem; }
+    .tag-desc { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .tag-example { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 0.3rem 0.6rem; border-radius: 4px; }
+    .category-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.5rem; }
+    .search-wrapper { max-width: 500px; margin: 0 auto 2.5rem; }
+    .no-results { text-align: center; padding: 3rem; color: var(--text-muted); display: none; }
+    .no-results.show { display: block; }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">⚡ Code<span>Learn</span></a>
+    <div class="nav-links">
+      <a href="html-grundlagen.html" class="active">HTML</a>
+      <a href="css-grundlagen.html">CSS</a>
+      <a href="flexbox.html">Flexbox</a>
+      <a href="css-grid.html">Grid</a>
+      <a href="animationen.html">Animationen</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="cheatsheets.html">Cheatsheets</a>
+    </div>
+    <div class="nav-actions">
+      <a href="quiz.html" class="btn-nav">Quiz starten</a>
+      <button class="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="html-grundlagen.html">📄 HTML Grundlagen</a>
+  <a href="css-grundlagen.html">🎨 CSS Grundlagen</a>
+  <a href="html-tags.html">🏷️ HTML Tags</a>
+  <a href="css-layouts.html">📐 CSS Layouts</a>
+  <a href="flexbox.html">↔️ Flexbox</a>
+  <a href="css-grid.html">⊞ CSS Grid</a>
+  <a href="responsive.html">📱 Responsive Design</a>
+  <a href="animationen.html">✨ Animationen</a>
+  <a href="projekte.html">🚀 Projekte</a>
+  <a href="cheatsheets.html">📋 Cheatsheets</a>
+  <a href="quiz.html">🧠 Quiz</a>
+</div>
+
+<div class="tags-page">
+  <div class="page-header reveal" style="text-align:center; margin-bottom:2rem;">
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem; justify-content:center;">
+      <span class="badge badge-cyan">HTML</span>
+      <span class="badge badge-green">Referenz</span>
+      <span class="badge badge-blue">50+ Tags</span>
+    </div>
+    <h1>HTML Tags <span class="gradient-text">Übersicht</span></h1>
+    <p style="max-width:600px; margin:0 auto;">Alle wichtigen HTML-Elemente auf einen Blick – mit Beschreibung und Beispiel. Nutze die Suche, um schnell das richtige Tag zu finden.</p>
+  </div>
+
+  <div class="search-wrapper reveal">
+    <div class="search-box" style="max-width:100%;">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="tag-search" placeholder="Tag suchen, z.B. &quot;div&quot;, &quot;input&quot;, &quot;table&quot;..." autocomplete="off">
+    </div>
+  </div>
+
+  <div id="no-results" class="no-results">
+    <p style="font-size:2rem;">🔍</p>
+    <p>Kein Tag gefunden. Versuche einen anderen Suchbegriff.</p>
+  </div>
+
+  <!-- Struktur -->
+  <div class="category-section" data-category="struktur">
+    <h2 class="category-title">🏗️ Dokument-Struktur</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;!DOCTYPE html&gt;</div><div class="tag-desc">Deklariert das Dokument als HTML5. Muss ganz am Anfang stehen.</div><div class="tag-example">&lt;!DOCTYPE html&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;html&gt;</div><div class="tag-desc">Wurzelelement jeder HTML-Seite. Enthält alle anderen Elemente.</div><div class="tag-example">&lt;html lang="de"&gt;...&lt;/html&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;head&gt;</div><div class="tag-desc">Enthält Metadaten, Titel, CSS-Links – nicht sichtbar auf der Seite.</div><div class="tag-example">&lt;head&gt;&lt;title&gt;Titel&lt;/title&gt;&lt;/head&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;body&gt;</div><div class="tag-desc">Enthält den gesamten sichtbaren Inhalt der Webseite.</div><div class="tag-example">&lt;body&gt;Inhalt&lt;/body&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;header&gt;</div><div class="tag-desc">Kopfbereich einer Seite oder eines Abschnitts. Semantisches Element.</div><div class="tag-example">&lt;header&gt;&lt;nav&gt;...&lt;/nav&gt;&lt;/header&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;nav&gt;</div><div class="tag-desc">Navigationsbereich mit Links. Wichtig für Barrierefreiheit.</div><div class="tag-example">&lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/nav&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;main&gt;</div><div class="tag-desc">Hauptinhalt der Seite. Nur einmal pro Seite verwenden.</div><div class="tag-example">&lt;main&gt;Hauptinhalt&lt;/main&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;section&gt;</div><div class="tag-desc">Thematischer Abschnitt mit Überschrift. Für inhaltliche Gliederung.</div><div class="tag-example">&lt;section&gt;&lt;h2&gt;Titel&lt;/h2&gt;&lt;/section&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;article&gt;</div><div class="tag-desc">Eigenständiger, wiederverwendbarer Inhalt (Blogpost, News-Artikel).</div><div class="tag-example">&lt;article&gt;&lt;h2&gt;Artikel&lt;/h2&gt;&lt;/article&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;aside&gt;</div><div class="tag-desc">Ergänzender Inhalt, der zum Hauptinhalt in Beziehung steht (Sidebar).</div><div class="tag-example">&lt;aside&gt;Sidebar&lt;/aside&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;footer&gt;</div><div class="tag-desc">Fußbereich einer Seite oder eines Abschnitts.</div><div class="tag-example">&lt;footer&gt;© 2024&lt;/footer&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;div&gt;</div><div class="tag-desc">Generischer Block-Container ohne semantische Bedeutung. Für Layout.</div><div class="tag-example">&lt;div class="container"&gt;...&lt;/div&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;span&gt;</div><div class="tag-desc">Generischer Inline-Container ohne semantische Bedeutung.</div><div class="tag-example">&lt;span class="highlight"&gt;Text&lt;/span&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Text & Formatierung -->
+  <div class="category-section" data-category="text">
+    <h2 class="category-title">✍️ Text &amp; Formatierung</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;h1&gt; – &lt;h6&gt;</div><div class="tag-desc">Überschriften von wichtig (h1) bis unwichtig (h6). Hierarchisch verwenden.</div><div class="tag-example">&lt;h1&gt;Haupttitel&lt;/h1&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;p&gt;</div><div class="tag-desc">Absatz. Browser fügen automatisch Abstände ein.</div><div class="tag-example">&lt;p&gt;Ein Absatz Text.&lt;/p&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;strong&gt;</div><div class="tag-desc">Wichtiger Text – semantisch bedeutsam, wird fett dargestellt.</div><div class="tag-example">&lt;strong&gt;Wichtig!&lt;/strong&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;em&gt;</div><div class="tag-desc">Betonter Text – semantisch bedeutsam, wird kursiv dargestellt.</div><div class="tag-example">&lt;em&gt;Betont&lt;/em&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;b&gt;</div><div class="tag-desc">Visuell fett ohne semantische Bedeutung. Lieber &lt;strong&gt; verwenden.</div><div class="tag-example">&lt;b&gt;Fett&lt;/b&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;i&gt;</div><div class="tag-desc">Visuell kursiv ohne semantische Bedeutung. Für Icons, Fachbegriffe.</div><div class="tag-example">&lt;i class="icon"&gt;&lt;/i&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;mark&gt;</div><div class="tag-desc">Hervorgehobener/markierter Text (gelbe Markierung).</div><div class="tag-example">&lt;mark&gt;Markiert&lt;/mark&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;small&gt;</div><div class="tag-desc">Kleingedrucktes – Copyright, Haftungsausschlüsse, Fußnoten.</div><div class="tag-example">&lt;small&gt;© 2024&lt;/small&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;del&gt;</div><div class="tag-desc">Durchgestrichener Text – gelöschter oder veralteter Inhalt.</div><div class="tag-example">&lt;del&gt;Alter Preis&lt;/del&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;ins&gt;</div><div class="tag-desc">Eingefügter Text – neu hinzugefügter Inhalt (unterstrichen).</div><div class="tag-example">&lt;ins&gt;Neuer Text&lt;/ins&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;code&gt;</div><div class="tag-desc">Inline-Code im Fließtext. Monospace-Schrift.</div><div class="tag-example">&lt;code&gt;console.log()&lt;/code&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;pre&gt;</div><div class="tag-desc">Vorformatierter Text – Leerzeichen und Zeilenumbrüche bleiben erhalten.</div><div class="tag-example">&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;blockquote&gt;</div><div class="tag-desc">Längeres Zitat aus einer anderen Quelle. Mit cite-Attribut.</div><div class="tag-example">&lt;blockquote cite="url"&gt;Zitat&lt;/blockquote&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;q&gt;</div><div class="tag-desc">Kurzes Inline-Zitat. Browser fügen automatisch Anführungszeichen ein.</div><div class="tag-example">&lt;q&gt;Kurzes Zitat&lt;/q&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;abbr&gt;</div><div class="tag-desc">Abkürzung mit Erklärung im title-Attribut.</div><div class="tag-example">&lt;abbr title="HyperText"&gt;HTML&lt;/abbr&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;br&gt;</div><div class="tag-desc">Zeilenumbruch. Selbstschließend. Sparsam verwenden.</div><div class="tag-example">Zeile 1&lt;br&gt;Zeile 2</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;hr&gt;</div><div class="tag-desc">Horizontale Trennlinie. Semantisch: thematischer Bruch.</div><div class="tag-example">&lt;hr&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;sub&gt; / &lt;sup&gt;</div><div class="tag-desc">Tiefgestellt / Hochgestellt. Für Formeln, Fußnoten.</div><div class="tag-example">H&lt;sub&gt;2&lt;/sub&gt;O, x&lt;sup&gt;2&lt;/sup&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Links & Medien -->
+  <div class="category-section" data-category="medien">
+    <h2 class="category-title">🔗 Links &amp; Medien</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;a&gt;</div><div class="tag-desc">Hyperlink. href für Ziel, target="_blank" für neuen Tab.</div><div class="tag-example">&lt;a href="url" target="_blank"&gt;Link&lt;/a&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;img&gt;</div><div class="tag-desc">Bild einbinden. alt-Attribut ist Pflicht für Barrierefreiheit.</div><div class="tag-example">&lt;img src="bild.jpg" alt="Beschreibung"&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;figure&gt;</div><div class="tag-desc">Eigenständiger Medieninhalt (Bild, Diagramm) mit optionaler Bildunterschrift.</div><div class="tag-example">&lt;figure&gt;&lt;img&gt;&lt;figcaption&gt;...&lt;/figcaption&gt;&lt;/figure&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;figcaption&gt;</div><div class="tag-desc">Bildunterschrift für &lt;figure&gt;-Elemente.</div><div class="tag-example">&lt;figcaption&gt;Abb. 1&lt;/figcaption&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;video&gt;</div><div class="tag-desc">Video einbinden. controls, autoplay, loop, muted als Attribute.</div><div class="tag-example">&lt;video src="video.mp4" controls&gt;&lt;/video&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;audio&gt;</div><div class="tag-desc">Audio einbinden. controls für Steuerung.</div><div class="tag-example">&lt;audio src="audio.mp3" controls&gt;&lt;/audio&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;source&gt;</div><div class="tag-desc">Alternative Medienquellen für &lt;video&gt; und &lt;audio&gt;.</div><div class="tag-example">&lt;source src="video.webm" type="video/webm"&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;iframe&gt;</div><div class="tag-desc">Eingebetteter externer Inhalt (YouTube, Google Maps).</div><div class="tag-example">&lt;iframe src="url" width="600" height="400"&gt;&lt;/iframe&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;picture&gt;</div><div class="tag-desc">Responsive Bilder mit verschiedenen Quellen je nach Viewport.</div><div class="tag-example">&lt;picture&gt;&lt;source media="..."&gt;&lt;img&gt;&lt;/picture&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;svg&gt;</div><div class="tag-desc">Skalierbare Vektorgrafik direkt im HTML. Ideal für Icons und Logos.</div><div class="tag-example">&lt;svg viewBox="0 0 24 24"&gt;...&lt;/svg&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Listen -->
+  <div class="category-section" data-category="listen">
+    <h2 class="category-title">📋 Listen</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;ul&gt;</div><div class="tag-desc">Ungeordnete Liste (Aufzählung mit Punkten).</div><div class="tag-example">&lt;ul&gt;&lt;li&gt;Punkt&lt;/li&gt;&lt;/ul&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;ol&gt;</div><div class="tag-desc">Geordnete Liste (nummeriert). start-Attribut für Startnummer.</div><div class="tag-example">&lt;ol start="3"&gt;&lt;li&gt;Drei&lt;/li&gt;&lt;/ol&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;li&gt;</div><div class="tag-desc">Listenelement. Nur innerhalb von &lt;ul&gt;, &lt;ol&gt; oder &lt;menu&gt;.</div><div class="tag-example">&lt;li&gt;Listenpunkt&lt;/li&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;dl&gt;</div><div class="tag-desc">Definitionsliste. Für Begriffe und ihre Erklärungen.</div><div class="tag-example">&lt;dl&gt;&lt;dt&gt;Begriff&lt;/dt&gt;&lt;dd&gt;Erklärung&lt;/dd&gt;&lt;/dl&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;dt&gt;</div><div class="tag-desc">Definitionsterm (Begriff) in einer &lt;dl&gt;-Liste.</div><div class="tag-example">&lt;dt&gt;HTML&lt;/dt&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;dd&gt;</div><div class="tag-desc">Definitionsbeschreibung (Erklärung) in einer &lt;dl&gt;-Liste.</div><div class="tag-example">&lt;dd&gt;HyperText Markup Language&lt;/dd&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Tabellen -->
+  <div class="category-section" data-category="tabellen">
+    <h2 class="category-title">📊 Tabellen</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;table&gt;</div><div class="tag-desc">Tabellen-Container. Nur für tabellarische Daten, nicht für Layouts!</div><div class="tag-example">&lt;table&gt;...&lt;/table&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;thead&gt;</div><div class="tag-desc">Tabellenkopf-Bereich. Enthält die Kopfzeile(n).</div><div class="tag-example">&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Spalte&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;tbody&gt;</div><div class="tag-desc">Tabellenkörper. Enthält die Datenzeilen.</div><div class="tag-example">&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Daten&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;tfoot&gt;</div><div class="tag-desc">Tabellenfuß. Für Summen, Zusammenfassungen.</div><div class="tag-example">&lt;tfoot&gt;&lt;tr&gt;&lt;td&gt;Summe&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;tr&gt;</div><div class="tag-desc">Tabellenzeile (Table Row).</div><div class="tag-example">&lt;tr&gt;&lt;td&gt;Zelle&lt;/td&gt;&lt;/tr&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;th&gt;</div><div class="tag-desc">Tabellenkopfzelle. Fett und zentriert. scope-Attribut für Barrierefreiheit.</div><div class="tag-example">&lt;th scope="col"&gt;Name&lt;/th&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;td&gt;</div><div class="tag-desc">Tabellendatenzelle. colspan/rowspan zum Verbinden von Zellen.</div><div class="tag-example">&lt;td colspan="2"&gt;Breit&lt;/td&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;caption&gt;</div><div class="tag-desc">Tabellenüberschrift. Wichtig für Barrierefreiheit.</div><div class="tag-example">&lt;caption&gt;Monatliche Ausgaben&lt;/caption&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Formulare -->
+  <div class="category-section" data-category="formulare">
+    <h2 class="category-title">📝 Formulare</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;form&gt;</div><div class="tag-desc">Formular-Container. action (Ziel) und method (GET/POST) als Attribute.</div><div class="tag-example">&lt;form action="/senden" method="POST"&gt;&lt;/form&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;input&gt;</div><div class="tag-desc">Eingabefeld. type bestimmt den Typ: text, email, password, number, date, checkbox, radio, file, submit...</div><div class="tag-example">&lt;input type="email" required&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;label&gt;</div><div class="tag-desc">Beschriftung für Formularfelder. for-Attribut mit id des Inputs verknüpfen.</div><div class="tag-example">&lt;label for="name"&gt;Name:&lt;/label&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;textarea&gt;</div><div class="tag-desc">Mehrzeiliges Texteingabefeld. rows und cols für Größe.</div><div class="tag-example">&lt;textarea rows="5" cols="40"&gt;&lt;/textarea&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;select&gt;</div><div class="tag-desc">Dropdown-Auswahlmenü. multiple für Mehrfachauswahl.</div><div class="tag-example">&lt;select name="land"&gt;&lt;option&gt;DE&lt;/option&gt;&lt;/select&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;option&gt;</div><div class="tag-desc">Auswahloption in &lt;select&gt; oder &lt;datalist&gt;.</div><div class="tag-example">&lt;option value="de"&gt;Deutschland&lt;/option&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;optgroup&gt;</div><div class="tag-desc">Gruppiert Optionen in einem &lt;select&gt;-Element.</div><div class="tag-example">&lt;optgroup label="Europa"&gt;...&lt;/optgroup&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;button&gt;</div><div class="tag-desc">Schaltfläche. type: submit, reset oder button.</div><div class="tag-example">&lt;button type="submit"&gt;Absenden&lt;/button&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;fieldset&gt;</div><div class="tag-desc">Gruppiert zusammengehörige Formularfelder mit Rahmen.</div><div class="tag-example">&lt;fieldset&gt;&lt;legend&gt;Adresse&lt;/legend&gt;&lt;/fieldset&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;legend&gt;</div><div class="tag-desc">Beschriftung für ein &lt;fieldset&gt;-Element.</div><div class="tag-example">&lt;legend&gt;Persönliche Daten&lt;/legend&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;datalist&gt;</div><div class="tag-desc">Vordefinierte Optionen für ein &lt;input&gt;-Feld (Autocomplete).</div><div class="tag-example">&lt;datalist id="laender"&gt;&lt;option value="DE"&gt;&lt;/datalist&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;output&gt;</div><div class="tag-desc">Ergebnis einer Berechnung oder Benutzereingabe.</div><div class="tag-example">&lt;output name="result"&gt;0&lt;/output&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Semantic HTML -->
+  <div class="category-section" data-category="semantic">
+    <h2 class="category-title">🏷️ Semantic HTML</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;time&gt;</div><div class="tag-desc">Datum oder Uhrzeit. datetime-Attribut für maschinenlesbare Form.</div><div class="tag-example">&lt;time datetime="2024-01-15"&gt;15. Januar&lt;/time&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;address&gt;</div><div class="tag-desc">Kontaktinformationen für den Autor oder Eigentümer.</div><div class="tag-example">&lt;address&gt;info@example.com&lt;/address&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;details&gt;</div><div class="tag-desc">Aufklappbares Inhaltselement. open-Attribut für standardmäßig geöffnet.</div><div class="tag-example">&lt;details&gt;&lt;summary&gt;Mehr&lt;/summary&gt;Inhalt&lt;/details&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;summary&gt;</div><div class="tag-desc">Sichtbare Zusammenfassung/Titel für &lt;details&gt;.</div><div class="tag-example">&lt;summary&gt;Klicke für mehr&lt;/summary&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;dialog&gt;</div><div class="tag-desc">Modales oder nicht-modales Dialogfenster. open-Attribut zum Anzeigen.</div><div class="tag-example">&lt;dialog open&gt;Inhalt&lt;/dialog&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;progress&gt;</div><div class="tag-desc">Fortschrittsbalken. value und max als Attribute.</div><div class="tag-example">&lt;progress value="70" max="100"&gt;&lt;/progress&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;meter&gt;</div><div class="tag-desc">Messwert in einem bekannten Bereich (z.B. Festplattennutzung).</div><div class="tag-example">&lt;meter value="0.7" min="0" max="1"&gt;&lt;/meter&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;template&gt;</div><div class="tag-desc">HTML-Vorlage, die nicht gerendert wird. Für JavaScript-Nutzung.</div><div class="tag-example">&lt;template id="card-tmpl"&gt;...&lt;/template&gt;</div></div>
+    </div>
+  </div>
+
+  <!-- Meta & Head -->
+  <div class="category-section" data-category="meta">
+    <h2 class="category-title">🔧 Meta &amp; Head</h2>
+    <div class="tags-grid">
+      <div class="tag-item searchable"><div class="tag-name">&lt;title&gt;</div><div class="tag-desc">Seitentitel im Browser-Tab und in Suchergebnissen. 50–60 Zeichen empfohlen.</div><div class="tag-example">&lt;title&gt;Seite – Website&lt;/title&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;meta charset&gt;</div><div class="tag-desc">Zeichenkodierung. UTF-8 ermöglicht alle Sonderzeichen und Umlaute.</div><div class="tag-example">&lt;meta charset="UTF-8"&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;meta viewport&gt;</div><div class="tag-desc">Viewport-Einstellung für Responsive Design auf Mobilgeräten.</div><div class="tag-example">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;meta description&gt;</div><div class="tag-desc">Seitenbeschreibung für Suchmaschinen. 150–160 Zeichen empfohlen.</div><div class="tag-example">&lt;meta name="description" content="Beschreibung..."&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;link&gt;</div><div class="tag-desc">Verknüpft externe Ressourcen (CSS, Favicon, Fonts).</div><div class="tag-example">&lt;link rel="stylesheet" href="style.css"&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;script&gt;</div><div class="tag-desc">JavaScript einbinden oder inline schreiben. Am Ende des &lt;body&gt; empfohlen.</div><div class="tag-example">&lt;script src="app.js" defer&gt;&lt;/script&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;style&gt;</div><div class="tag-desc">Internes CSS im &lt;head&gt;. Für einzelne Seiten oder kritisches CSS.</div><div class="tag-example">&lt;style&gt;body { margin: 0; }&lt;/style&gt;</div></div>
+      <div class="tag-item searchable"><div class="tag-name">&lt;base&gt;</div><div class="tag-desc">Basis-URL für alle relativen Links auf der Seite.</div><div class="tag-example">&lt;base href="https://example.com/"&gt;</div></div>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Seitennavigation" style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; gap:1rem;">
+    <a href="css-grundlagen.html" class="page-nav-btn">
+      <span class="page-nav-label">← Zurück</span>
+      <span class="page-nav-title">CSS Grundlagen</span>
+    </a>
+    <a href="css-layouts.html" class="page-nav-btn next">
+      <span class="page-nav-label">Weiter →</span>
+      <span class="page-nav-title">CSS Layouts</span>
+    </a>
+  </nav>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">⚡ CodeLearn</a>
+        <p>Die moderne Lernplattform für HTML und CSS.</p>
+      </div>
+      <div class="footer-col"><h4>HTML</h4><ul><li><a href="html-grundlagen.html">HTML Grundlagen</a></li><li><a href="html-tags.html">HTML Tags</a></li></ul></div>
+      <div class="footer-col"><h4>CSS</h4><ul><li><a href="css-grundlagen.html">CSS Grundlagen</a></li><li><a href="flexbox.html">Flexbox</a></li><li><a href="css-grid.html">CSS Grid</a></li></ul></div>
+      <div class="footer-col"><h4>Mehr</h4><ul><li><a href="projekte.html">Projekte</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="cheatsheets.html">Cheatsheets</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 CodeLearn. Erstellt mit ❤️ für angehende Web-Entwickler.</p></div>
+  </div>
+</footer>
+<button id="scroll-top" aria-label="Nach oben scrollen">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="main.js"></script>
+<script>
+  const searchInput = document.getElementById('tag-search');
+  const tagItems = document.querySelectorAll('.tag-item.searchable');
+  const noResults = document.getElementById('no-results');
+  const categorySections = document.querySelectorAll('.category-section');
+  searchInput.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    let visibleCount = 0;
+    tagItems.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!q || text.includes(q)) { item.classList.remove('hidden'); visibleCount++; }
+      else { item.classList.add('hidden'); }
+    });
+    categorySections.forEach(section => {
+      const visible = section.querySelectorAll('.tag-item:not(.hidden)').length;
+      section.style.display = visible === 0 && q ? 'none' : '';
+    });
+    noResults.classList.toggle('show', visibleCount === 0 && q !== '');
+  });
+</script>
+</body>
+</html>
+
